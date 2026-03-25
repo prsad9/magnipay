@@ -18,18 +18,19 @@ const queryClient = new QueryClient();
 const ScrollToHash = () => {
   const { hash, pathname } = useLocation();
 
-  // Always scroll to top on initial page load / reload
+  // Always reset scroll on initial route mount, but keep motion smooth
   useEffect(() => {
     window.history.scrollRestoration = "manual";
-    // Force scroll to top immediately + after paint to beat layout shifts
-    window.scrollTo(0, 0);
-    requestAnimationFrame(() => window.scrollTo(0, 0));
-    const raf2 = requestAnimationFrame(() => {
-      requestAnimationFrame(() => window.scrollTo(0, 0));
-    });
-    // Final fallback after animations settle
-    const t = setTimeout(() => window.scrollTo(0, 0), 150);
-    return () => { cancelAnimationFrame(raf2); clearTimeout(t); };
+    const setTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    setTop();
+    const raf1 = requestAnimationFrame(setTop);
+    const raf2 = requestAnimationFrame(() => requestAnimationFrame(setTop));
+    const timeout = setTimeout(setTop, 150);
+    return () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+      clearTimeout(timeout);
+    };
   }, []);
 
   useEffect(() => {
