@@ -1,31 +1,21 @@
 import { motion } from "framer-motion";
 import {
-  Smartphone, QrCode, Fingerprint, Banknote, ArrowRightLeft,
-  CreditCard, Send, Shield, Bus, TrainFront, Plane, Phone,
-  Tv, Zap, Receipt, Wallet, Globe, HandCoins, RefreshCcw,
+  Banknote, Fingerprint, CreditCard, ShoppingCart, HandCoins, Send,
+  Shield, Plane, Zap, Gift, RefreshCcw,
 } from "lucide-react";
 
 const services = [
-  { icon: Smartphone, label: "UPI Collection", desc: "Accept payments via any UPI app instantly", gradient: "from-blue-500 to-indigo-600", target: "cat-collections" },
-  { icon: QrCode, label: "Static QR", desc: "One QR code for all payment methods", gradient: "from-violet-500 to-purple-600", target: "cat-collections" },
-  { icon: Fingerprint, label: "Aadhaar ATM", desc: "Biometric-based cash withdrawal service", gradient: "from-emerald-500 to-teal-600", target: "cat-aadhaar" },
-  { icon: Banknote, label: "Payouts", desc: "Bulk disbursals to bank accounts", gradient: "from-amber-500 to-orange-600", target: "cat-banking" },
-  { icon: ArrowRightLeft, label: "IMPS / NEFT", desc: "Instant & scheduled fund transfers", gradient: "from-cyan-500 to-blue-600", target: "cat-banking" },
-  { icon: RefreshCcw, label: "Reconciliation", desc: "Automated transaction matching", gradient: "from-pink-500 to-rose-600", target: "cat-banking" },
-  { icon: CreditCard, label: "POS & mPOS", desc: "Card acceptance at your counter", gradient: "from-indigo-500 to-blue-600", target: "cat-payment-services" },
-  { icon: Globe, label: "Payment Gateway", desc: "Online checkout for your website", gradient: "from-teal-500 to-emerald-600", target: "cat-payment-services" },
-  { icon: HandCoins, label: "EMI Collections", desc: "Flexible instalment collection", gradient: "from-orange-500 to-red-600", target: "cat-cash-management" },
-  { icon: Send, label: "Remittance", desc: "Domestic money transfer made easy", gradient: "from-purple-500 to-violet-600", target: "cat-remittance" },
-  { icon: Shield, label: "Insurance", desc: "Policy purchase & premium collection", gradient: "from-sky-500 to-blue-600", target: "cat-insurance" },
-  { icon: Wallet, label: "Wallet Transfers", desc: "Send money to any mobile wallet", gradient: "from-rose-500 to-pink-600", target: "cat-remittance" },
-  { icon: Bus, label: "Bus Ticket Booking", desc: "Book intercity & local bus tickets", gradient: "from-green-500 to-emerald-600", target: "cat-travel" },
-  { icon: TrainFront, label: "Train Ticket Booking", desc: "IRCTC rail ticket reservations", gradient: "from-blue-600 to-indigo-700", target: "cat-travel" },
-  { icon: Plane, label: "Flight Ticket Booking", desc: "Domestic & international air tickets", gradient: "from-violet-600 to-purple-700", target: "cat-travel" },
-  { icon: Phone, label: "Mobile Recharge", desc: "Prepaid & postpaid top-ups", gradient: "from-lime-500 to-green-600", target: "cat-bills" },
-  { icon: Tv, label: "DTH Recharge", desc: "Dish TV, Tata Play & more", gradient: "from-fuchsia-500 to-pink-600", target: "cat-bills" },
-  { icon: Zap, label: "Electricity Bill", desc: "Pay power bills for any provider", gradient: "from-yellow-500 to-amber-600", target: "cat-bills" },
-  { icon: Receipt, label: "Utility Bills", desc: "Gas, water & broadband payments", gradient: "from-slate-500 to-gray-600", target: "cat-bills" },
-  { icon: QrCode, label: "Bharat QR", desc: "Interoperable QR by NPCI", gradient: "from-orange-500 to-amber-600", target: "cat-payment-services" },
+  { icon: Banknote, label: "Collections", desc: "Accept payments instantly", gradient: "from-blue-500 to-indigo-600", target: "cat-collections" },
+  { icon: Fingerprint, label: "aadhar", desc: "Biometric payment access", gradient: "from-emerald-500 to-teal-600", target: "cat-aadhaar" },
+  { icon: CreditCard, label: "Banking", desc: "Payouts & fund transfers", gradient: "from-amber-500 to-orange-600", target: "cat-banking" },
+  { icon: ShoppingCart, label: "payments", desc: "Online & offline solutions", gradient: "from-indigo-500 to-blue-600", target: "cat-payment-services" },
+  { icon: HandCoins, label: "cash", desc: "Smart money management", gradient: "from-orange-500 to-red-600", target: "cat-cash-management" },
+  { icon: Send, label: "Money Remittance", desc: "Easy domestic transfer", gradient: "from-purple-500 to-violet-600", target: "cat-remittance" },
+  { icon: Shield, label: "Insurance", desc: "Coverage & protection", gradient: "from-sky-500 to-blue-600", target: "cat-insurance" },
+  { icon: Plane, label: "Travel", desc: "Ticket booking made easy", gradient: "from-violet-600 to-purple-700", target: "cat-travel" },
+  { icon: Zap, label: "bills", desc: "Recharges & utilities", gradient: "from-yellow-500 to-amber-600", target: "cat-bills" },
+  { icon: Gift, label: "rewards", desc: "Earn on every transaction", gradient: "from-pink-500 to-rose-600", target: "cat-rewards" },
+  { icon: RefreshCcw, label: "refunds", desc: "Instant refund process", gradient: "from-teal-500 to-emerald-600", target: "cat-refunds" },
 ];
 
 const ServiceCard = ({ icon: Icon, label, desc, gradient, target }: { icon: typeof Smartphone; label: string; desc: string; gradient: string; target: string }) => (

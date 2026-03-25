@@ -298,11 +298,11 @@ const ContactSection = () => {
                   </div>
                   <span className="text-muted-foreground group-hover:text-foreground transition-colors font-medium">+91 6727-359737</span>
                 </a>
-                <a href="mailto:info@utkaldigital.in" className="flex items-center gap-4 group">
+                <a href="mailto:magnipayleadgeneration@gmail.com" className="flex items-center gap-4 group">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-secondary to-primary group-hover:shadow-[0_0_20px_hsl(263_70%_58%_/_0.3)] transition-all duration-300">
                     <Mail size={18} className="text-white" />
                   </div>
-                  <span className="text-muted-foreground group-hover:text-foreground transition-colors font-medium">info@utkaldigital.in</span>
+                  <span className="text-muted-foreground group-hover:text-foreground transition-colors font-medium">magnipayleadgeneration@gmail.com</span>
                 </a>
                 <a href="https://wa.me/916727359737" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-accent to-secondary group-hover:shadow-[0_0_20px_hsl(187_92%_53%_/_0.3)] transition-all duration-300">
