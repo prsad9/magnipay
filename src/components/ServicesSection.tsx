@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   QrCode, ArrowRightLeft, Banknote,
@@ -140,6 +140,22 @@ const categories = [
 
 const ServicesSection = () => {
   const [activeModal, setActiveModal] = useState<{ icon: any; title: string; greeting: string; longDesc: string } | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  const baseMotion = {
+    initial: isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 0, y: 20, filter: "blur(6px)" },
+    whileInView: isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 1, y: 0, filter: "blur(0)" },
+    viewport: { once: true, amount: 0.2 },
+    transition: { duration: isMobile ? 0.2 : 0.6, ease: [0.16, 1, 0.3, 1] },
+  };
 
   return (
     <section id="services" className="py-20 sm:py-28 lg:py-36 relative overflow-hidden">
@@ -150,10 +166,7 @@ const ServicesSection = () => {
 
       <div className="container relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          {...baseMotion}
           className="text-center mb-20"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 capsule bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
@@ -171,10 +184,10 @@ const ServicesSection = () => {
           {categories.map((cat, catIdx) => (
             <div key={cat.title} id={cat.id}>
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
+                initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: isMobile ? 0.2 : 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
               >
                 <div className={`p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${cat.gradient} shadow-lg`}>
@@ -189,10 +202,10 @@ const ServicesSection = () => {
                     key={s.title}
                     className="neon-card p-6 sm:p-8 group text-left w-full"
                     onClick={() => setActiveModal({ icon: s.icon, title: s.title, greeting: s.greeting, longDesc: s.longDesc })}
-                    initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+                    initial={isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 0, y: 20, filter: "blur(6px)" }}
                     whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
                     viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: isMobile ? 0.25 : 0.6, delay: isMobile ? 0 : i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   >
                     {/* Icon */}
                     <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${cat.gradient} mb-4 transform group-hover:scale-110 transition-transform duration-300`}>
