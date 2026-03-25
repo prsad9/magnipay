@@ -1,0 +1,4 @@
+/* App root - no constraints, full-width */
+#root {
+  min-height: 100vh;
+}
