@@ -35,8 +35,8 @@ const showcases = [
     title: "Bank-Grade Security,",
     titleHighlight: "Zero Worry",
     description:
-      "Every transaction is protected with AES-256 encryption and monitored 24/7. PCI DSS Level 1 compliant infrastructure ensures your money and data stay safe at all times.",
-    features: ["PCI DSS Level 1", "End-to-end encryption", "24/7 fraud monitoring"],
+      "Every transaction is protected with AES-256 encryption and monitored 24/7. Bank-grade security ensures your money and data stay safe at all times.",
+    features: ["End-to-end encryption", "24/7 fraud monitoring", "ISO 27001 Certified"],
     icon: ShieldCheck,
     image:
       "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&q=80",

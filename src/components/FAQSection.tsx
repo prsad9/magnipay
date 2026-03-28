@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "Is MagniPay secure and compliant?",
-    a: "Absolutely. We are ISO 27001 certified and PCI DSS Level 1 compliant. All transactions are encrypted with bank-grade AES-256 encryption and monitored 24/7.",
+    a: "Absolutely. We are ISO 27001 certified. All transactions are encrypted with bank-grade AES-256 encryption and monitored 24/7.",
   },
   {
     q: "What are the settlement timelines?",

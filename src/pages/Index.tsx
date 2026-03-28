@@ -3,8 +3,8 @@ import HeroSection from "@/components/HeroSection";
 import ServicesMarquee from "@/components/ServicesMarquee";
 import OurPartnersSection from "@/components/OurPartnersSection";
 import ServicesSection from "@/components/ServicesSection";
+import CashbackAndRefundsSection from "@/components/CashbackAndRefundsSection";
 import FeaturesSection from "@/components/FeaturesSection";
-import CashbackRewardsSection from "@/components/CashbackRewardsSection";
 import ImageShowcase from "@/components/ImageShowcase";
 import RefundPolicySection from "@/components/RefundPolicySection";
 import HowItWorksSection from "@/components/HowItWorksSection";
@@ -23,14 +23,14 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
+        <ImageShowcase />
         <ServicesMarquee />
         <OurPartnersSection />
-        <ServicesSection />
-        <FeaturesSection />
-        <CashbackRewardsSection />
-        <ImageShowcase />
-        <RefundPolicySection />
         <HowItWorksSection />
+        <ServicesSection />
+        <CashbackAndRefundsSection />
+        <FeaturesSection />
+        <RefundPolicySection />
         <AboutSection />
         <TestimonialsSection />
         <FAQSection />

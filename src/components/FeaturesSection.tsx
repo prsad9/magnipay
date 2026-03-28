@@ -85,7 +85,7 @@ const FeaturesSection = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 capsule bg-secondary/10 border border-secondary/20 text-secondary text-xs font-semibold uppercase tracking-wider mb-4">
             Why Choose Us
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-3">
             Why <span className="text-gradient">Thousands Choose Us</span>
           </h2>
         </motion.div>
@@ -121,7 +121,7 @@ const FeaturesSection = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight mb-4">
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-4">
               Everything You Need to{" "}
               <span className="text-gradient">Accept & Send</span> Money
             </h3>

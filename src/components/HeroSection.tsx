@@ -335,7 +335,7 @@ const HeroSection = () => {
               className="absolute -bottom-2 left-4 sm:left-8 neon-card px-3 sm:px-4 py-2 sm:py-2.5 flex items-center gap-2 z-30"
             >
               <Shield size={14} className="text-emerald-500 sm:w-4 sm:h-4" />
-              <span className="text-[10px] sm:text-xs font-semibold">PCI DSS Compliant</span>
+              <span className="text-[10px] sm:text-xs font-semibold">Bank Secure</span>
             </motion.div>
 
             {/* Orbiting dot - hidden on mobile */}

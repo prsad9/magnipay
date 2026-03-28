@@ -1,18 +1,13 @@
 import { motion } from "framer-motion";
 
 const partners = [
-  { name: "State Bank of India", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cc/SBI-logo.svg" },
   { name: "HDFC Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg" },
-  { name: "ICICI Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/1/12/ICICI_Bank_Logo.svg" },
-  { name: "Axis Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Axis_Bank_logo.svg" },
-  { name: "PayPal", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" },
-  { name: "Stripe", logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" },
-  { name: "Mastercard", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" },
-  { name: "RuPay", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d1/RuPay.svg" },
+  { name: "State Bank of India", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cc/SBI-logo.svg" },
+  { name: "Cashfree", logo: "/cashfree-logo.png" },
+  { name: "Bank of Maharashtra", logo: "/bom-logo.png" },
+  { name: "Bank of Baroda", logo: "/bob-logo.png" },
+  { name: "Airtel Payments Bank", logo: "/apb-logo.png" },
   { name: "Razorpay", logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" },
-  { name: "Paytm", logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" },
-  { name: "Google Pay", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" },
-  { name: "CRED", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/CRED_%28FinTech_company%29_logo.svg" },
 ];
 
 const PartnerCard = ({ name, logo, index = 0 }: { name: string; logo: string; index?: number }) => (
