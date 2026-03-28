@@ -85,8 +85,8 @@ const CashbackRewardsSection = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-sm font-semibold mb-2.5 leading-tight line-clamp-2">{reward.title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3 flex-grow">{reward.desc}</p>
+              <h3 className="text-sm font-semibold mb-2 line-clamp-2">{reward.title}</h3>
+              <p className="text-xs text-muted-foreground line-clamp-2 flex-grow">{reward.desc}</p>
             </motion.div>
           ))}
         </div>

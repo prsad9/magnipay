@@ -94,8 +94,8 @@ const AboutSection = () => {
                 group-hover:shadow-[0_0_15px_rgba(37,99,235,0.2)] transition-all duration-300`}>
                 <f.icon size={18} className="text-white" />
               </div>
-              <h3 className="font-display font-bold text-xs sm:text-sm mb-2 leading-tight line-clamp-2">{f.title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3 flex-grow">{f.desc}</p>
+              <h3 className="font-display font-bold text-xs sm:text-sm mb-1.5 line-clamp-2">{f.title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2 flex-grow">{f.desc}</p>
             </motion.div>
           ))}
         </div>
