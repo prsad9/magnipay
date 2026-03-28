@@ -52,7 +52,7 @@ const ServiceCard = ({ icon: Icon, label, desc, gradient, target }: { icon: Reac
       </span>
 
       {/* Description */}
-      <span className="relative z-10 text-[8px] sm:text-[10px] lg:text-xs text-muted-foreground text-center leading-snug line-clamp-2">
+      <span className="relative z-10 text-[8px] sm:text-[10px] lg:text-xs text-muted-foreground text-center leading-relaxed line-clamp-2">
         {desc}
       </span>
     </div>

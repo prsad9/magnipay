@@ -147,8 +147,8 @@ const FeaturesSection = () => {
                 <div className="p-2.5 rounded-lg bg-primary/10 w-fit mb-3 group-hover:bg-primary/20 group-hover:shadow-[0_0_15px_hsl(var(--primary)_/_0.2)] transition-all duration-300">
                   <f.icon size={18} className="text-primary" />
                 </div>
-                <h4 className="font-semibold text-xs sm:text-sm mb-1.5 leading-snug">{f.title}</h4>
-                <p className="text-xs text-muted-foreground leading-snug line-clamp-3\">{f.desc}</p>
+                <h4 className="font-semibold text-xs sm:text-sm mb-2 leading-tight">{f.title}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">{f.desc}</p>
               </motion.div>
             ))}
           </div>
