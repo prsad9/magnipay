@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import {
   Banknote, Fingerprint, CreditCard, ShoppingCart, HandCoins, Send,
-  Shield, Plane, Zap, Gift, RefreshCcw,
+  Shield, Plane, Zap, Gift, RefreshCcw, Lock, FileText, AlertCircle,
 } from "lucide-react";
 
 const services = [
@@ -16,6 +16,9 @@ const services = [
   { icon: Zap, label: "bills", desc: "Recharges & utilities", gradient: "from-yellow-500 to-amber-600", target: "cat-bills" },
   { icon: Gift, label: "rewards", desc: "Earn on every transaction", gradient: "from-pink-500 to-rose-600", target: "cat-rewards" },
   { icon: RefreshCcw, label: "refunds", desc: "Instant refund process", gradient: "from-teal-500 to-emerald-600", target: "cat-refunds" },
+  { icon: Lock, label: "Privacy Policy", desc: "Your data is protected", gradient: "from-blue-500 to-indigo-600", target: "privacy-policy" },
+  { icon: FileText, label: "Terms of Service", desc: "Browse our terms", gradient: "from-purple-500 to-violet-600", target: "terms-of-service" },
+  { icon: AlertCircle, label: "Refund Policy", desc: "Easy return terms", gradient: "from-orange-500 to-red-600", target: "refund-policy" },
 ];
 
 const ServiceCard = ({ icon: Icon, label, desc, gradient, target }: { icon: React.ComponentType<{ size: number; className: string }>; label: string; desc: string; gradient: string; target: string }) => (
