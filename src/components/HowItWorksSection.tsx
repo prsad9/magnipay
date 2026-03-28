@@ -89,8 +89,8 @@ const HowItWorksSection = () => {
                   </div>
                 </div>
 
-                <h3 className="font-display font-bold text-sm sm:text-base mb-2 text-foreground">{step.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2">{step.desc}</p>
+                <h3 className="font-display font-bold text-sm sm:text-base mb-1.5 leading-snug text-foreground">{step.title}</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-snug line-clamp-2">{step.desc}</p>
 
                 {/* Bottom accent line */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-primary to-accent rounded-full group-hover:w-12 transition-all duration-300" />
