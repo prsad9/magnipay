@@ -80,17 +80,17 @@ const FeaturesSection = () => {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-20"
+          className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 capsule bg-secondary/10 border border-secondary/20 text-secondary text-xs font-semibold uppercase tracking-wider mb-6">
-            Why Choose MagniPay
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 capsule bg-secondary/10 border border-secondary/20 text-secondary text-xs font-semibold uppercase tracking-wider mb-4">
+            Why Choose Us
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-5">
+          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3">
             Why <span className="text-gradient">Thousands Choose Us</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 mb-20 sm:mb-28">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-16 sm:mb-20">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -98,34 +98,34 @@ const FeaturesSection = () => {
               whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              className="neon-card p-5 sm:p-8 lg:p-10 text-center group"
+              className="neon-card p-3 sm:p-5 lg:p-6 text-center group"
             >
-              <div className={`inline-flex p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-gradient-to-br ${stat.gradient} mb-3 sm:mb-5 
+              <div className={`inline-flex p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${stat.gradient} mb-2 sm:mb-3 
                 group-hover:shadow-[0_0_30px_hsl(var(--primary)_/_0.3)] transition-all duration-400`}>
-                <stat.icon size={20} className="text-white sm:hidden" />
-                <stat.icon size={26} className="text-white hidden sm:block" />
+                <stat.icon size={18} className="text-white sm:hidden" />
+                <stat.icon size={22} className="text-white hidden sm:block" />
               </div>
-              <div className="font-display text-xl sm:text-2xl md:text-4xl font-bold mb-1 sm:mb-2 tabular-nums text-gradient">
+              <div className="font-display text-base sm:text-lg md:text-2xl font-bold mb-1 tabular-nums text-gradient">
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
               </div>
-              <div className="text-sm text-muted-foreground font-medium uppercase tracking-wider">{stat.label}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground font-medium uppercase tracking-wider">{stat.label}</div>
             </motion.div>
           ))}
         </div>
 
         {/* Features - Split layout */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, x: -24, filter: "blur(6px)" }}
             whileInView={{ opacity: 1, x: 0, filter: "blur(0)" }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-6">
+            <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight mb-4">
               Everything You Need to{" "}
               <span className="text-gradient">Accept & Send</span> Money
             </h3>
-            <p className="text-muted-foreground leading-relaxed text-lg mb-8">
+            <p className="text-muted-foreground leading-relaxed text-base mb-6">
               Our platform handles the complexity of payments so you can focus on building your business.
               Secure, fast, and developer-friendly.
             </p>
@@ -134,7 +134,7 @@ const FeaturesSection = () => {
             </a>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6">
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
@@ -142,13 +142,13 @@ const FeaturesSection = () => {
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="neon-card p-5 sm:p-8 lg:p-10 group"
+                className="neon-card p-3 sm:p-5 lg:p-6 group"
               >
-                <div className="p-3 rounded-xl bg-primary/10 w-fit mb-4 group-hover:bg-primary/20 group-hover:shadow-[0_0_15px_hsl(var(--primary)_/_0.2)] transition-all duration-300">
-                  <f.icon size={20} className="text-primary" />
+                <div className="p-2.5 rounded-lg bg-primary/10 w-fit mb-3 group-hover:bg-primary/20 group-hover:shadow-[0_0_15px_hsl(var(--primary)_/_0.2)] transition-all duration-300">
+                  <f.icon size={18} className="text-primary" />
                 </div>
-                <h4 className="font-semibold text-base mb-2">{f.title}</h4>
-                <p className="text-base text-muted-foreground leading-relaxed">{f.desc}</p>
+                <h4 className="font-semibold text-xs sm:text-sm mb-1.5">{f.title}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">{f.desc}</p>
               </motion.div>
             ))}
           </div>

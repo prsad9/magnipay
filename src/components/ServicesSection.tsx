@@ -167,20 +167,20 @@ const ServicesSection = () => {
       <div className="container relative z-10">
         <motion.div
           {...baseMotion}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-14 lg:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 capsule bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 capsule bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
             Our Solutions
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-5">
-            Comprehensive Payment <span className="text-gradient">Solutions</span>
+          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3">
+            Payment <span className="text-gradient">Solutions</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-pretty text-base sm:text-lg lg:text-xl">
-            From collections to payouts, we provide the complete financial infrastructure your business needs to grow.
+          <p className="text-muted-foreground max-w-xl mx-auto text-pretty text-sm sm:text-base lg:text-lg">
+            Complete payment infrastructure for every business need.
           </p>
         </motion.div>
 
-        <div className="space-y-16 sm:space-y-20 lg:space-y-28">
+        <div className="space-y-10 sm:space-y-12 lg:space-y-16">
           {categories.map((cat, catIdx) => (
             <div key={cat.title} id={cat.id}>
               <motion.div
@@ -188,19 +188,19 @@ const ServicesSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: isMobile ? 0.2 : 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
+                className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5"
               >
-                <div className={`p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${cat.gradient} shadow-lg`}>
-                  <cat.icon size={18} className="text-white sm:hidden" />
-                  <cat.icon size={22} className="text-white hidden sm:block" />
+                <div className={`p-2 sm:p-2.5 rounded-lg bg-gradient-to-br ${cat.gradient} shadow-lg`}>
+                  <cat.icon size={16} className="text-white sm:hidden" />
+                  <cat.icon size={20} className="text-white hidden sm:block" />
                 </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold">{cat.title}</h3>
+                <h3 className="font-display text-lg sm:text-xl font-bold">{cat.title}</h3>
               </motion.div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
                 {cat.services.map((s, i) => (
                   <motion.button
                     key={s.title}
-                    className="neon-card p-6 sm:p-8 group text-left w-full"
+                    className="neon-card p-3 sm:p-4 group text-left w-full h-full flex flex-col"
                     onClick={() => setActiveModal({ icon: s.icon, title: s.title, greeting: s.greeting, longDesc: s.longDesc })}
                     initial={isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 0, y: 20, filter: "blur(6px)" }}
                     whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
@@ -208,13 +208,13 @@ const ServicesSection = () => {
                     transition={{ duration: isMobile ? 0.25 : 0.6, delay: isMobile ? 0 : i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   >
                     {/* Icon */}
-                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${cat.gradient} mb-4 transform group-hover:scale-110 transition-transform duration-300`}>
-                      <s.icon size={24} className="text-white" />
+                    <div className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${cat.gradient} mb-2 transform group-hover:scale-110 transition-transform duration-300 w-fit`}>
+                      <s.icon size={18} className="text-white" />
                     </div>
 
                     {/* Content */}
-                    <h4 className="text-lg font-semibold mb-3">{s.title}</h4>
-                    <p className="text-sm text-muted-foreground">{s.desc}</p>
+                    <h4 className="text-sm sm:text-base font-semibold mb-2 line-clamp-2">{s.title}</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 flex-grow">{s.desc}</p>
                   </motion.button>
                 ))}
               </div>

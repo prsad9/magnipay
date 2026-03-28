@@ -48,45 +48,45 @@ const CashbackRewardsSection = () => {
       <div className="container relative z-10">
         {/* Hero Text */}
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-12"
           initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full mb-4">
             <Zap size={12} className="text-primary" />
-            <span className="text-sm font-medium text-primary">Rewards Program</span>
+            <span className="text-xs font-medium text-primary">Rewards Program</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            Earn <span className="text-gradient">Cashback</span> with Magnipay
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
+            Earn <span className="text-gradient">Cashback</span>
           </h2>
 
-          <p className="text-lg text-muted-foreground mb-8">
-            Get rewarded for every transaction. Unlock exclusive benefits and bonuses as you grow with us.
+          <p className="text-sm sm:text-base text-muted-foreground">
+            Get rewarded for every transaction and unlock exclusive benefits.
           </p>
         </motion.div>
 
         {/* Rewards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
           {rewards.map((reward, i) => (
             <motion.div
               key={i}
-              className="neon-card p-5 sm:p-8 lg:p-10 group"
+              className="neon-card p-3 sm:p-4 lg:p-5 group flex flex-col"
               initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               {/* Icon */}
-              <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${reward.gradient} mb-4 transform group-hover:scale-110 transition-transform duration-300`}>
-                <reward.icon size={24} className="text-white" />
+              <div className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${reward.gradient} mb-3 transform group-hover:scale-110 transition-transform duration-300 w-fit`}>
+                <reward.icon size={18} className="text-white" />
               </div>
 
               {/* Content */}
-              <h3 className="text-lg font-semibold mb-3">{reward.title}</h3>
-              <p className="text-sm text-muted-foreground">{reward.desc}</p>
+              <h3 className="text-sm font-semibold mb-2 line-clamp-2">{reward.title}</h3>
+              <p className="text-xs text-muted-foreground line-clamp-2 flex-grow">{reward.desc}</p>
             </motion.div>
           ))}
         </div>

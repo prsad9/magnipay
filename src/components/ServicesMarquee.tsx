@@ -1,7 +1,8 @@
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Banknote, Fingerprint, CreditCard, ShoppingCart, HandCoins, Send,
-  Shield, Plane, Zap, Gift, RefreshCcw,
+  Shield, Plane, Zap, Gift, RefreshCcw, ChevronLeft, ChevronRight,
 } from "lucide-react";
 
 const services = [
@@ -18,7 +19,7 @@ const services = [
   { icon: RefreshCcw, label: "refunds", desc: "Instant refund process", gradient: "from-teal-500 to-emerald-600", target: "cat-refunds" },
 ];
 
-const ServiceCard = ({ icon: Icon, label, desc, gradient, target }: { icon: typeof Smartphone; label: string; desc: string; gradient: string; target: string }) => (
+const ServiceCard = ({ icon: Icon, label, desc, gradient, target }: { icon: React.ComponentType<{ size: number; className: string }>; label: string; desc: string; gradient: string; target: string }) => (
   <div
     className="flex-shrink-0 w-[120px] sm:w-[140px] md:w-[160px] group cursor-pointer select-none"
     onClick={() => document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "center" })}
@@ -52,6 +53,47 @@ const ServiceCard = ({ icon: Icon, label, desc, gradient, target }: { icon: type
 );
 
 const ServicesMarquee = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  // Check scroll position
+  const checkScroll = () => {
+    if (!scrollContainerRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+  };
+
+  // Manual scroll buttons
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollContainerRef.current) return;
+    const scrollAmount = 350;
+    const targetScroll = scrollContainerRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+    
+    scrollContainerRef.current.scrollTo({
+      left: targetScroll,
+      behavior: 'smooth',
+    });
+    
+    setTimeout(checkScroll, 100);
+  };
+
+  useEffect(() => {
+    checkScroll();
+
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', checkScroll);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', checkScroll);
+      }
+    };
+  }, []);
+
   return (
     <section className="relative py-10 sm:py-14 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
@@ -71,16 +113,76 @@ const ServicesMarquee = () => {
             Everything You Need,{" "}
             <span className="text-gradient">One Platform</span>
           </h2>
+          <p className="text-sm text-muted-foreground mt-2">← Scroll to explore all features →</p>
         </motion.div>
       </div>
 
-      {/* Single row — all services side-by-side, scrolling left */}
+      {/* Interactive scrollable container */}
       <div className="relative group">
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 md:w-40 bg-gradient-to-r from-background via-background/90 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 md:w-40 bg-gradient-to-l from-background via-background/90 to-transparent z-10 pointer-events-none" />
-        <div className="flex gap-3 sm:gap-4 animate-marquee-left-slow group-hover:[animation-play-state:paused]">
-          {[...services, ...services].map((s, i) => (
+        {/* Left fade gradient */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
+        
+        {/* Right fade gradient */}
+        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
+
+        {/* Left scroll button */}
+        <button
+          onClick={() => scroll('left')}
+          disabled={!canScrollLeft}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full
+                     bg-primary/80 hover:bg-primary text-white backdrop-blur-sm
+                     shadow-lg hover:shadow-xl transition-all duration-300
+                     disabled:opacity-30 disabled:cursor-not-allowed
+                     hover:scale-110 active:scale-95 ml-2 sm:ml-4"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft size={20} className="sm:hidden" />
+          <ChevronLeft size={24} className="hidden sm:block" />
+        </button>
+
+        {/* Right scroll button */}
+        <button
+          onClick={() => scroll('right')}
+          disabled={!canScrollRight}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full
+                     bg-primary/80 hover:bg-primary text-white backdrop-blur-sm
+                     shadow-lg hover:shadow-xl transition-all duration-300
+                     disabled:opacity-30 disabled:cursor-not-allowed
+                     hover:scale-110 active:scale-95 mr-2 sm:mr-4"
+          aria-label="Scroll right"
+        >
+          <ChevronRight size={20} className="sm:hidden" />
+          <ChevronRight size={24} className="hidden sm:block" />
+        </button>
+
+        {/* Scrollable container */}
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-3 sm:gap-4 overflow-x-auto scroll-smooth pb-2 px-4 sm:px-8
+                     [scroll-behavior:smooth]
+                     [&::-webkit-scrollbar]:h-2
+                     [&::-webkit-scrollbar-track]:bg-transparent
+                     [&::-webkit-scrollbar-thumb]:bg-primary/30
+                     [&::-webkit-scrollbar-thumb]:rounded-full
+                     [&::-webkit-scrollbar-thumb]:hover:bg-primary/50"
+          onWheel={(e) => {
+            e.preventDefault();
+            if (scrollContainerRef.current) {
+              const scrollAmount = e.deltaY > 0 ? 80 : -80;
+              scrollContainerRef.current.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth',
+              });
+              setTimeout(checkScroll, 50);
+            }
+          }}
+        >
+          {services.map((s, i) => (
             <ServiceCard key={i} {...s} />
+          ))}
+          {/* Duplicate for seamless looping effect */}
+          {services.map((s, i) => (
+            <ServiceCard key={`dup-${i}`} {...s} />
           ))}
         </div>
       </div>
