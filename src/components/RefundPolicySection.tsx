@@ -21,7 +21,7 @@ const stats = [
 
 const RefundPolicySection = () => {
   return (
-    <section className="py-20 sm:py-28 lg:py-36 relative overflow-hidden">
+    <section id="refund-policy-section" className="py-20 sm:py-28 lg:py-36 relative overflow-hidden">
       {/* Ambient glow */}
       <div
         className="absolute inset-0"
