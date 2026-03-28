@@ -180,10 +180,10 @@ const ServicesSection = () => {
   }, [activeModal]);
 
   const baseMotion = {
-    initial: isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 0, y: 20, filter: "blur(6px)" },
-    whileInView: isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 1, y: 0, filter: "blur(0)" },
+    initial: isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, amount: 0.2 },
-    transition: { duration: isMobile ? 0.2 : 0.6, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: isMobile ? 0.1 : 0.6, ease: [0.16, 1, 0.3, 1] },
   };
 
   return (
@@ -213,7 +213,7 @@ const ServicesSection = () => {
           {categories.map((cat, catIdx) => {
             // For all sections with images
             return (
-              <div key={cat.title} id={cat.id}>
+              <div key={cat.title} id={cat.id} className="contain-content">
                 <div className={`grid gap-6 sm:gap-8 lg:gap-10 items-center ${cat.image ? "lg:grid-cols-2" : ""}`}>
                   {/* Image on Left */}
                   {cat.image && cat.imagePosition === "left" && (
@@ -221,16 +221,17 @@ const ServicesSection = () => {
                       initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.2 }}
-                      transition={{ duration: isMobile ? 0.2 : 0.6, ease: [0.16, 1, 0.3, 1] }}
-                      className="relative rounded-2xl overflow-hidden h-64 sm:h-80 lg:h-96 border border-white/20 dark:border-white/10 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                      transition={{ duration: isMobile ? 0.15 : 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      className="group relative rounded-2xl overflow-hidden h-64 sm:h-80 lg:h-96 border border-white/20 dark:border-white/10 shadow-lg contain-paint"
                     >
                       <img
                         src={cat.image}
                         alt={cat.imageAlt}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 ease-out"
+                        className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110 will-change-transform"
                         loading="lazy"
+                        decoding="async"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
                     </motion.div>
                   )}
 
@@ -240,7 +241,7 @@ const ServicesSection = () => {
                       initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, amount: 0.2 }}
-                      transition={{ duration: isMobile ? 0.2 : 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: isMobile ? 0.1 : 0.6, ease: [0.16, 1, 0.3, 1] }}
                       className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5"
                     >
                       <div className={`p-2 sm:p-2.5 rounded-lg bg-gradient-to-br ${cat.gradient} shadow-lg`}>
@@ -253,16 +254,16 @@ const ServicesSection = () => {
                       {cat.services.map((s, i) => (
                         <motion.button
                           key={s.title}
-                          className="neon-card p-3 sm:p-4 group text-left w-full flex items-start gap-3 hover:border-primary/60 transition-all duration-300 cursor-pointer"
+                          className="neon-card p-3 sm:p-4 group text-left w-full flex items-start gap-3 hover:border-primary/60 transition-all duration-200 cursor-pointer"
                           onClick={() => setActiveModal({ icon: s.icon, title: s.title, greeting: s.greeting, longDesc: s.longDesc })}
-                          initial={isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 0, y: 20, filter: "blur(6px)" }}
-                          whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
+                          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, amount: 0.2 }}
-                          transition={{ duration: isMobile ? 0.25 : 0.6, delay: isMobile ? 0 : i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                          transition={{ duration: isMobile ? 0.1 : 0.6, delay: isMobile ? 0 : i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                           type="button"
                         >
                           {/* Icon */}
-                          <div className={`rounded-lg bg-gradient-to-br ${cat.gradient} transform group-hover:scale-110 transition-transform duration-300 flex-shrink-0 p-2`}>
+                          <div className={`rounded-lg bg-gradient-to-br ${cat.gradient} transform group-hover:scale-110 transition-transform duration-200 flex-shrink-0 p-2 will-change-transform`}>
                             <s.icon size={16} className="text-white" />
                           </div>
 
@@ -282,16 +283,17 @@ const ServicesSection = () => {
                       initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.2 }}
-                      transition={{ duration: isMobile ? 0.2 : 0.6, ease: [0.16, 1, 0.3, 1] }}
-                      className="relative rounded-2xl overflow-hidden h-64 sm:h-80 lg:h-96 border border-white/20 dark:border-white/10 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                      transition={{ duration: isMobile ? 0.15 : 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      className="group relative rounded-2xl overflow-hidden h-64 sm:h-80 lg:h-96 border border-white/20 dark:border-white/10 shadow-lg contain-paint"
                     >
                       <img
                         src={cat.image}
                         alt={cat.imageAlt}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 ease-out"
+                        className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110 will-change-transform"
                         loading="lazy"
+                        decoding="async"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
                     </motion.div>
                   )}
                 </div>
