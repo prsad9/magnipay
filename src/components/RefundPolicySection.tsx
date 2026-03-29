@@ -6,14 +6,14 @@ import {
 } from "lucide-react";
 
 const highlights = [
-  { icon: Ban, label: "No Cancellation", desc: "Transactions are final once value is credited to your ID.", color: "from-red-500 to-rose-600" },
-  { icon: AlertTriangle, label: "Failed Delivery?", desc: "If value isn't delivered in 24 hrs, you can request a refund.", color: "from-amber-500 to-orange-500" },
+  { icon: Ban, label: "No Cancellation", desc: "Transactions are final once value is credited to your ID.", color: "from-brand-dark-blue to-brand-blue" },
+  { icon: AlertTriangle, label: "Failed Delivery?", desc: "If value isn't delivered in 24 hrs, you can request a refund.", color: "from-brand-blue to-brand-green" },
   { icon: Clock, label: "45-Day Processing", desc: "Verified refunds credited to original payment method within 45 working days.", color: "from-primary to-secondary" },
-  { icon: CheckCircle2, label: "Transparent Process", desc: "Email us with transaction details and we'll handle the rest.", color: "from-accent to-emerald-600" },
+  { icon: CheckCircle2, label: "Transparent Process", desc: "Email us with transaction details and we'll handle the rest.", color: "from-accent to-secondary" },
 ];
 
 const stats = [
-  { icon: IndianRupee, value: "0", suffix: " Hidden Fees", gradient: "from-accent to-emerald-600" },
+  { icon: IndianRupee, value: "0", suffix: " Hidden Fees", gradient: "from-accent to-secondary" },
   { icon: Percent, value: "100", suffix: "% Transparent", gradient: "from-primary to-secondary" },
   { icon: RefreshCcw, value: "45", suffix: " Day Refund", gradient: "from-secondary to-primary" },
   { icon: Banknote, value: "24/7", suffix: " Support", gradient: "from-primary to-accent" },

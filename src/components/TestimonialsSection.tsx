@@ -35,9 +35,9 @@ const TestimonialsSection = () => {
     <section className="py-20 sm:py-28 lg:py-36 relative overflow-hidden">
       {/* Premium gradient orbs */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-[120px] opacity-20 pointer-events-none"
-        style={{ background: "linear-gradient(135deg, #2563EB, #7C3AED)" }} />
+        style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)))" }} />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-15 pointer-events-none"
-        style={{ background: "linear-gradient(135deg, #7C3AED, #2563EB)" }} />
+        style={{ background: "linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--primary)))" }} />
       
       <div className="container max-w-3xl relative z-10">
         <motion.div

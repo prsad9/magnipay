@@ -110,14 +110,14 @@ const ContactSection = () => {
     <section id="contact" className="py-20 sm:py-28 lg:py-36 relative overflow-hidden">
       <div className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse 60% 40% at 50% 50%, hsl(217 91% 60% / 0.06), transparent)",
+          background: "radial-gradient(ellipse 60% 40% at 50% 50%, hsl(var(--primary) / 0.08), transparent)",
         }}
       />
       {/* Premium gradient accents */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-10 pointer-events-none"
-        style={{ background: "linear-gradient(135deg, #2563EB, #7C3AED)" }} />
+        style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)))" }} />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full blur-[120px] opacity-10 pointer-events-none"
-        style={{ background: "linear-gradient(135deg, #7C3AED, #2563EB)" }} />
+        style={{ background: "linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--primary)))" }} />
       
       <div className="container relative z-10">
         <motion.div
@@ -158,7 +158,7 @@ const ContactSection = () => {
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
-                className="bg-emerald-500/10 text-emerald-500 rounded-xl p-4 text-sm font-semibold flex items-center gap-3 border border-emerald-500/20"
+                className="bg-accent/10 text-accent rounded-xl p-4 text-sm font-semibold flex items-center gap-3 border border-accent/20"
               >
                 <CheckCircle size={18} className="flex-shrink-0" />
                 <span>✓ Got it! We'll be in touch soon.</span>

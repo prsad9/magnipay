@@ -9,7 +9,7 @@ const FinalCTASection = () => {
       />
       {/* Premium gradient orbs */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full blur-[160px] opacity-15 pointer-events-none"
-        style={{ background: "linear-gradient(135deg, #2563EB, #7C3AED, #2563EB)" }} />
+        style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--primary)))" }} />
 
       <div className="container relative z-10 text-center">
         <motion.div

@@ -69,7 +69,7 @@ const CashbackAndRefundsSection = () => {
   };
 
   return (
-    <section id="cashback-refunds" className="py-12 sm:py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-neutral-900 dark:to-neutral-800">
+    <section id="cashback-refunds" className="py-20 sm:py-28 lg:py-36 relative overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-neutral-900 dark:to-neutral-800">
       {/* Background decorative elements */}
       <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-20"
         style={{ background: "radial-gradient(circle, hsl(333 71% 51% / 0.15), transparent)" }}

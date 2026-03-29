@@ -169,7 +169,7 @@ const sections: Section[] = [
             <blockquote key={i} className="border-l-2 border-primary/30 pl-4 italic text-sm">{`"${t}"`}</blockquote>
           ))}
         </div>
-        <div className="rounded-xl border border-amber-400/30 bg-amber-500/5 dark:bg-amber-400/5 p-4 text-sm">
+        <div className="rounded-xl border border-primary/20 bg-primary/5 dark:bg-primary/10 p-4 text-sm">
           <strong className="text-foreground">Note:</strong> If you are a registered dealer, you must update your KYC details
           with our Accounts Department. Contact No.: <a href="tel:+916727359737" className="text-primary hover:underline font-medium">+91-6727-359737</a>
         </div>
@@ -656,11 +656,11 @@ const TermsOfService = () => {
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div
           className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-[0.07]"
-          style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }}
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary)), transparent)" }}
         />
         <div
           className="absolute bottom-1/4 left-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-[0.06]"
-          style={{ background: "radial-gradient(circle, #2563EB, transparent)" }}
+          style={{ background: "radial-gradient(circle, hsl(var(--primary)), transparent)" }}
         />
       </div>
 

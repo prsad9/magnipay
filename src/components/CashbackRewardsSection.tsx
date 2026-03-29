@@ -6,25 +6,25 @@ const rewards = [
     icon: CircleDollarSign,
     title: "Cashback on Transactions",
     desc: "Earn up to 2% cashback on every transaction made through Magnipay. Watch your rewards grow with every payment.",
-    gradient: "from-green-500 to-emerald-600",
+    gradient: "from-brand-green to-brand-dark-green",
   },
   {
     icon: Gift,
     title: "Referral Rewards",
     desc: "Invite friends and family to earn generous commissions. Get rewards both for referrals and when they make their first transaction.",
-    gradient: "from-pink-500 to-rose-600",
+    gradient: "from-brand-light-blue to-brand-blue",
   },
   {
     icon: Zap,
     title: "Instant Bonus Rewards",
     desc: "Get instant rewards on your first payment. Activate your account and claim your welcome bonus today.",
-    gradient: "from-yellow-500 to-orange-600",
+    gradient: "from-brand-blue to-brand-green",
   },
   {
     icon: TrendingUp,
     title: "Business Incentives",
     desc: "Higher rewards tier as your business grows. Scale your earnings with exclusive merchant benefits and volume bonuses.",
-    gradient: "from-blue-500 to-cyan-600",
+    gradient: "from-brand-dark-blue to-brand-light-blue",
   },
 ];
 
@@ -34,9 +34,9 @@ const CashbackRewardsSection = () => {
       {/* Premium gradient mesh */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[120px] opacity-20"
-          style={{ background: "radial-gradient(circle, #84CC16, transparent)" }} />
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary)), transparent)" }} />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-15"
-          style={{ background: "radial-gradient(circle, #F59E0B, transparent)" }} />
+          style={{ background: "radial-gradient(circle, hsl(var(--primary)), transparent)" }} />
       </div>
       <div className="absolute inset-0 opacity-[0.02]"
         style={{

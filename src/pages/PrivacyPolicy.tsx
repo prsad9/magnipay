@@ -177,9 +177,9 @@ const PrivacyPolicy = () => {
       {/* Ambient background orbs */}
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-[0.07]"
-          style={{ background: "radial-gradient(circle, #2563EB, transparent)" }} />
+          style={{ background: "radial-gradient(circle, hsl(var(--primary)), transparent)" }} />
         <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-[0.06]"
-          style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }} />
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary)), transparent)" }} />
       </div>
 
       <div className="container max-w-4xl pt-28 pb-16 sm:py-16 px-4">
@@ -225,7 +225,7 @@ const PrivacyPolicy = () => {
             platform, you agree to the terms of this Privacy Policy. If you do not agree, please do
             not access our services.
           </p>
-          <div className="rounded-xl border border-amber-400/30 bg-amber-500/5 dark:bg-amber-400/5 p-4 text-sm">
+          <div className="rounded-xl border border-primary/20 bg-primary/5 dark:bg-primary/10 p-4 text-sm">
             <strong className="text-foreground">Note:</strong> This Privacy Policy is subject to change
             without prior notice. Please review it periodically to stay informed about updates.
           </div>

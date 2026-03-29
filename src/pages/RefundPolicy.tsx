@@ -110,11 +110,11 @@ const RefundPolicy = () => {
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div
           className="absolute top-0 right-1/3 w-[500px] h-[500px] rounded-full blur-3xl opacity-[0.07]"
-          style={{ background: "radial-gradient(circle, #2563EB, transparent)" }}
+          style={{ background: "radial-gradient(circle, hsl(var(--primary)), transparent)" }}
         />
         <div
           className="absolute bottom-1/4 left-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-[0.06]"
-          style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }}
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary)), transparent)" }}
         />
       </div>
 
@@ -153,7 +153,7 @@ const RefundPolicy = () => {
                 At UtkalDigital, we aim for a transparent and fair refund policy. Please read the
                 guidelines below carefully before initiating any transaction on our platform.
               </p>
-              <div className="rounded-xl border border-amber-400/30 bg-amber-500/5 dark:bg-amber-400/5 p-4 text-sm">
+              <div className="rounded-xl border border-primary/20 bg-primary/5 dark:bg-primary/10 p-4 text-sm">
                 <strong className="text-foreground">Important:</strong> All transactions are final once
                 the value has been successfully credited to your UtkalDigital ID.
               </div>

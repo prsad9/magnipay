@@ -31,17 +31,17 @@ const articles = [
 ];
 
 const tagColors: Record<string, string> = {
-  Trends: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-  Security: "bg-red-500/10 text-red-500 border-red-500/20",
-  Technology: "bg-purple-500/10 text-purple-500 border-purple-500/20",
-  Industry: "bg-amber-500/10 text-amber-500 border-amber-500/20",
-  Impact: "bg-green-500/10 text-green-500 border-green-500/20",
-  Innovation: "bg-cyan-500/10 text-cyan-500 border-cyan-500/20",
-  Guide: "bg-indigo-500/10 text-indigo-500 border-indigo-500/20",
-  Business: "bg-orange-500/10 text-orange-500 border-orange-500/20",
-  Regulation: "bg-slate-500/10 text-slate-500 border-slate-500/20",
-  Compliance: "bg-teal-500/10 text-teal-500 border-teal-500/20",
-  Future: "bg-violet-500/10 text-violet-500 border-violet-500/20",
+  Trends: "bg-[#1F6FA9]/10 text-[#1F6FA9] border-[#1F6FA9]/20",
+  Security: "bg-[#1B4F7A]/10 text-[#1B4F7A] border-[#1B4F7A]/20",
+  Technology: "bg-[#3B8FC4]/10 text-[#3B8FC4] border-[#3B8FC4]/20",
+  Industry: "bg-[#1B4F7A]/10 text-[#1B4F7A] border-[#1B4F7A]/20",
+  Impact: "bg-[#6BBF59]/12 text-[#4A9E3E] border-[#6BBF59]/20",
+  Innovation: "bg-[#3B8FC4]/10 text-[#1F6FA9] border-[#3B8FC4]/20",
+  Guide: "bg-[#1F6FA9]/10 text-[#1F6FA9] border-[#1F6FA9]/20",
+  Business: "bg-[#4A9E3E]/10 text-[#4A9E3E] border-[#4A9E3E]/20",
+  Regulation: "bg-[#1B4F7A]/10 text-[#1B4F7A] border-[#1B4F7A]/20",
+  Compliance: "bg-[#6BBF59]/12 text-[#4A9E3E] border-[#6BBF59]/20",
+  Future: "bg-[#8FD97A]/15 text-[#4A9E3E] border-[#8FD97A]/30",
 };
 
 const BlogPage = () => {

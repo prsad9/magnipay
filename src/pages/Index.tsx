@@ -9,7 +9,6 @@ import ImageShowcase from "@/components/ImageShowcase";
 import RefundPolicySection from "@/components/RefundPolicySection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import AboutSection from "@/components/AboutSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import FinalCTASection from "@/components/FinalCTASection";
@@ -32,7 +31,6 @@ const Index = () => {
         <FeaturesSection />
         <RefundPolicySection />
         <AboutSection />
-        <TestimonialsSection />
         <FAQSection />
         <ContactSection />
         <FinalCTASection />

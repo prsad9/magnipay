@@ -6,20 +6,20 @@ import {
 } from "lucide-react";
 
 const services = [
-  { icon: Banknote, label: "Collections", desc: "Accept payments instantly", gradient: "from-blue-500 to-indigo-600", target: "cat-collections", type: "section" },
-  { icon: Fingerprint, label: "aadhar", desc: "Biometric payment access", gradient: "from-emerald-500 to-teal-600", target: "cat-aadhaar", type: "section" },
-  { icon: CreditCard, label: "Banking", desc: "Payouts & fund transfers", gradient: "from-amber-500 to-orange-600", target: "cat-banking", type: "section" },
-  { icon: ShoppingCart, label: "payments", desc: "Online & offline solutions", gradient: "from-indigo-500 to-blue-600", target: "cat-payment-services", type: "section" },
-  { icon: HandCoins, label: "cash", desc: "Smart money management", gradient: "from-orange-500 to-red-600", target: "cat-cash-management", type: "section" },
-  { icon: Send, label: "Money Remittance", desc: "Easy domestic transfer", gradient: "from-purple-500 to-violet-600", target: "cat-remittance", type: "section" },
-  { icon: Shield, label: "Insurance", desc: "Coverage & protection", gradient: "from-sky-500 to-blue-600", target: "cat-insurance", type: "section" },
-  { icon: Lock, label: "Privacy Policy", desc: "Your data protection", gradient: "from-green-500 to-emerald-600", target: "/privacy", type: "page" },
-  { icon: Scroll, label: "Terms of Service", desc: "Terms & conditions", gradient: "from-blue-500 to-cyan-600", target: "/terms", type: "page" },
-  { icon: FileText, label: "Refund Policy", desc: "Refund & returns", gradient: "from-red-500 to-orange-600", target: "/refund", type: "page" },
-  { icon: Plane, label: "Travel", desc: "Ticket booking made easy", gradient: "from-violet-600 to-purple-700", target: "cat-travel", type: "section" },
-  { icon: Zap, label: "bills", desc: "Recharges & utilities", gradient: "from-yellow-500 to-amber-600", target: "cat-bills", type: "section" },
-  { icon: Gift, label: "rewards", desc: "Earn on every transaction", gradient: "from-pink-500 to-rose-600", target: "cat-rewards", type: "section" },
-  { icon: RefreshCcw, label: "refunds", desc: "Instant refund process", gradient: "from-teal-500 to-emerald-600", target: "cat-refunds", type: "section" },
+  { icon: Banknote, label: "Collections", desc: "Accept payments instantly", gradient: "from-brand-blue to-brand-light-blue", target: "cat-collections", type: "section" },
+  { icon: Fingerprint, label: "aadhar", desc: "Biometric payment access", gradient: "from-brand-green to-brand-dark-green", target: "cat-aadhaar", type: "section" },
+  { icon: CreditCard, label: "Banking", desc: "Payouts & fund transfers", gradient: "from-brand-dark-blue to-brand-blue", target: "cat-banking", type: "section" },
+  { icon: ShoppingCart, label: "payments", desc: "Online & offline solutions", gradient: "from-brand-light-blue to-brand-blue", target: "cat-payment-services", type: "section" },
+  { icon: HandCoins, label: "cash", desc: "Smart money management", gradient: "from-brand-dark-blue to-brand-dark-green", target: "cat-cash-management", type: "section" },
+  { icon: Send, label: "Money Remittance", desc: "Easy domestic transfer", gradient: "from-brand-blue to-brand-green", target: "cat-remittance", type: "section" },
+  { icon: Shield, label: "Insurance", desc: "Coverage & protection", gradient: "from-brand-green to-brand-light-green", target: "cat-insurance", type: "section" },
+  { icon: Lock, label: "Privacy Policy", desc: "Your data protection", gradient: "from-brand-green to-brand-dark-green", target: "/privacy", type: "page" },
+  { icon: Scroll, label: "Terms of Service", desc: "Terms & conditions", gradient: "from-brand-dark-blue to-brand-blue", target: "/terms", type: "page" },
+  { icon: FileText, label: "Refund Policy", desc: "Refund & returns", gradient: "from-brand-blue to-brand-green", target: "/refund", type: "page" },
+  { icon: Plane, label: "Travel", desc: "Ticket booking made easy", gradient: "from-brand-dark-blue to-brand-green", target: "cat-travel", type: "section" },
+  { icon: Zap, label: "bills", desc: "Recharges & utilities", gradient: "from-brand-light-blue to-brand-green", target: "cat-bills", type: "section" },
+  { icon: Gift, label: "rewards", desc: "Earn on every transaction", gradient: "from-brand-green to-brand-light-green", target: "cat-rewards", type: "section" },
+  { icon: RefreshCcw, label: "refunds", desc: "Instant refund process", gradient: "from-brand-blue to-brand-green", target: "cat-refunds", type: "section" },
 ];
 
 const ServiceCard = ({ icon: Icon, label, desc, gradient, target, type }: { icon: typeof Banknote; label: string; desc: string; gradient: string; target: string; type: string }) => {
@@ -42,7 +42,7 @@ const ServiceCard = ({ icon: Icon, label, desc, gradient, target, type }: { icon
     <div className="relative aspect-square rounded-2xl border border-border/50 dark:border-white/10 bg-card/80 dark:bg-white/[0.02] backdrop-blur-md
                     flex flex-col items-center justify-center gap-3 p-5
                     transition-all duration-300 overflow-hidden
-                    hover:border-primary/60 dark:hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(37,99,235,0.2)] dark:hover:shadow-[0_12px_40px_rgba(37,99,235,0.3)]
+                    hover:border-primary/60 dark:hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(31,111,169,0.18)] dark:hover:shadow-[0_12px_40px_rgba(59,143,196,0.24)]
                     hover:scale-[1.05] active:scale-[0.98]">
       {/* Gradient background on hover */}
       <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-[0.08] dark:group-hover:opacity-[0.15] transition-opacity duration-300 rounded-2xl`} />
@@ -70,7 +70,7 @@ const ServiceCard = ({ icon: Icon, label, desc, gradient, target, type }: { icon
 
 const ServicesMarquee = () => {
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24">
+    <section className="relative py-20 sm:py-28 lg:py-36">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">

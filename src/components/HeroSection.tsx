@@ -18,7 +18,7 @@ const PhoneMockup = () => (
       className="relative w-[220px] sm:w-[260px] md:w-[280px] mx-auto"
     >
       {/* Phone frame */}
-      <div className="relative rounded-[2.5rem] border-[3px] border-neutral-700 dark:border-neutral-600 bg-black overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(37,99,235,0.15)]">
+      <div className="relative rounded-[2.5rem] border-[3px] border-neutral-700 dark:border-neutral-600 bg-black overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(31,111,169,0.16)]">
         {/* Status bar */}
         <div className="flex items-center justify-between px-6 pt-3 pb-1 bg-gradient-to-b from-neutral-900 to-neutral-900/90">
           <span className="text-[10px] text-white/70 font-medium">9:41</span>
@@ -31,14 +31,14 @@ const PhoneMockup = () => (
         </div>
 
         {/* App content */}
-        <div className="bg-gradient-to-b from-neutral-900 via-[#0a1628] to-[#0f1f3d] px-4 sm:px-5 pb-5 sm:pb-6 pt-3 sm:pt-4 min-h-[360px] sm:min-h-[420px]">
+        <div className="bg-gradient-to-b from-neutral-900 via-[#0d2033] to-[#173550] px-4 sm:px-5 pb-5 sm:pb-6 pt-3 sm:pt-4 min-h-[360px] sm:min-h-[420px]">
           {/* App header */}
           <div className="flex items-center justify-between mb-6">
             <div>
               <p className="text-[10px] text-white/50 uppercase tracking-wider">Welcome back</p>
               <p className="text-sm font-bold text-white">MagniPay</p>
             </div>
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-[10px] font-bold text-white">M</div>
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-blue to-brand-green flex items-center justify-center text-[10px] font-bold text-white">M</div>
           </div>
 
           {/* Balance card */}
@@ -47,7 +47,7 @@ const PhoneMockup = () => (
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
             className="rounded-2xl p-4 mb-5 relative overflow-hidden"
-            style={{ background: "linear-gradient(135deg, #2563EB, #7C3AED)" }}
+            style={{ background: "linear-gradient(135deg, #1F6FA9, #6BBF59)" }}
           >
             <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-white/10 -translate-y-8 translate-x-8" />
             <div className="absolute bottom-0 left-0 w-16 h-16 rounded-full bg-white/5 translate-y-6 -translate-x-6" />
@@ -88,9 +88,9 @@ const PhoneMockup = () => (
           {/* Recent transactions */}
           <p className="text-[10px] text-white/50 uppercase tracking-wider mb-3">Recent</p>
           {[
-            { name: "Grocery Store", amount: "-₹1,240", time: "2m ago", color: "bg-orange-500" },
-            { name: "Salary Credit", amount: "+₹45,000", time: "1h ago", color: "bg-emerald-500" },
-            { name: "Electric Bill", amount: "-₹2,100", time: "3h ago", color: "bg-blue-500" },
+            { name: "Grocery Store", amount: "-₹1,240", time: "2m ago", color: "bg-brand-dark-blue" },
+            { name: "Salary Credit", amount: "+₹45,000", time: "1h ago", color: "bg-brand-green" },
+            { name: "Electric Bill", amount: "-₹2,100", time: "3h ago", color: "bg-brand-light-blue" },
           ].map((tx, i) => (
             <motion.div
               key={tx.name}
@@ -108,7 +108,7 @@ const PhoneMockup = () => (
                   <p className="text-[10px] text-white/40">{tx.time}</p>
                 </div>
               </div>
-              <span className={`text-xs font-semibold ${tx.amount.startsWith('+') ? 'text-emerald-400' : 'text-white/80'}`}>
+              <span className={`text-xs font-semibold ${tx.amount.startsWith('+') ? 'text-secondary' : 'text-white/80'}`}>
                 {tx.amount}
               </span>
             </motion.div>
@@ -117,7 +117,7 @@ const PhoneMockup = () => (
       </div>
 
       {/* Phone shadow/glow */}
-      <div className="absolute -inset-2 rounded-[3rem] bg-gradient-to-b from-blue-500/20 to-purple-600/20 blur-2xl -z-10 opacity-60" />
+      <div className="absolute -inset-2 rounded-[3rem] bg-gradient-to-b from-brand-blue/25 to-brand-green/20 blur-2xl -z-10 opacity-60" />
     </motion.div>
   </motion.div>
 );
@@ -133,15 +133,15 @@ const FloatingCreditCard = () => (
     <motion.div
       animate={{ y: [0, -8, 0], rotateZ: [8, 6, 8] }}
       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      className="w-[200px] h-[126px] rounded-2xl p-4 relative overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.3),0_0_20px_rgba(124,58,237,0.2)]"
-      style={{ background: "linear-gradient(135deg, #1e1e2e, #2d1b69, #1a1a3e)" }}
+      className="w-[200px] h-[126px] rounded-2xl p-4 relative overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.3),0_0_20px_rgba(107,191,89,0.18)]"
+      style={{ background: "linear-gradient(135deg, #0f2236, #1B4F7A, #173550)" }}
     >
-      <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-purple-500/15 -translate-y-12 translate-x-12" />
-      <div className="absolute bottom-0 left-0 w-20 h-20 rounded-full bg-blue-500/10 translate-y-8 -translate-x-8" />
+      <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-brand-green/15 -translate-y-12 translate-x-12" />
+      <div className="absolute bottom-0 left-0 w-20 h-20 rounded-full bg-brand-light-blue/12 translate-y-8 -translate-x-8" />
       
       {/* Chip */}
-      <div className="w-8 h-6 rounded-md bg-gradient-to-br from-amber-300 to-amber-500 mb-3 flex items-center justify-center">
-        <div className="w-5 h-3 rounded-sm border border-amber-600/40" />
+      <div className="w-8 h-6 rounded-md bg-gradient-to-br from-brand-light-green to-brand-green mb-3 flex items-center justify-center">
+        <div className="w-5 h-3 rounded-sm border border-brand-dark-green/40" />
       </div>
       
       <p className="text-[11px] text-white/90 font-mono tracking-[0.2em] mb-2">•••• •••• •••• 4289</p>
@@ -172,8 +172,8 @@ const SuccessNotification = () => (
       transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
       className="neon-card px-4 py-3 flex items-center gap-3"
     >
-      <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
-        <Check size={14} className="text-emerald-500" />
+      <div className="w-8 h-8 rounded-full bg-accent/15 flex items-center justify-center">
+        <Check size={14} className="text-accent" />
       </div>
       <div>
         <p className="text-xs font-semibold text-foreground">Payment Received</p>
@@ -185,7 +185,7 @@ const SuccessNotification = () => (
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center hero-bg overflow-hidden">
+    <section id="home" className="relative py-20 sm:py-28 lg:py-36 flex items-center hero-bg overflow-hidden">
       {/* Background fintech icons */}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none overflow-hidden">
         {bgIcons.map((icon, i) => (
@@ -226,7 +226,7 @@ const HeroSection = () => {
         style={{ background: "radial-gradient(circle, hsl(var(--secondary) / 0.08), transparent)" }}
       />
 
-      <div className="container relative z-10 pt-24 sm:pt-28 pb-12 sm:pb-20">
+      <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
             <motion.div
@@ -334,7 +334,7 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 1.5 }}
               className="absolute -bottom-2 left-4 sm:left-8 neon-card px-3 sm:px-4 py-2 sm:py-2.5 flex items-center gap-2 z-30"
             >
-              <Shield size={14} className="text-emerald-500 sm:w-4 sm:h-4" />
+              <Shield size={14} className="text-accent sm:w-4 sm:h-4" />
               <span className="text-[10px] sm:text-xs font-semibold">Bank Secure</span>
             </motion.div>
 

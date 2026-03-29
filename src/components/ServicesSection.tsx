@@ -15,7 +15,7 @@ const categories = [
     id: "cat-collections",
     title: "Collections",
     icon: Layers,
-    gradient: "from-blue-500 to-indigo-600",
+    gradient: "from-brand-blue to-brand-light-blue",
     image: "/collections.jpeg",
     imageAlt: "QR code payment collection",
     imagePosition: "right",
@@ -29,7 +29,7 @@ const categories = [
     id: "cat-aadhaar",
     title: "Aadhaar Enabled Payments",
     icon: Fingerprint,
-    gradient: "from-emerald-500 to-teal-600",
+    gradient: "from-brand-green to-brand-dark-green",
     image: "/aadhaar-payments.png",
     imageAlt: "Biometric fingerprint authentication",
     imagePosition: "left",
@@ -43,7 +43,7 @@ const categories = [
     id: "cat-banking",
     title: "Banking",
     icon: Landmark,
-    gradient: "from-amber-500 to-orange-600",
+    gradient: "from-brand-dark-blue to-brand-blue",
     image: "/banking.jpg",
     imageAlt: "Bank transfer and payout services",
     imagePosition: "right",
@@ -57,7 +57,7 @@ const categories = [
     id: "cat-payment-services",
     title: "Payment Services",
     icon: CreditCard,
-    gradient: "from-indigo-500 to-blue-600",
+    gradient: "from-brand-light-blue to-brand-blue",
     image: "/payment-services.jpeg",
     imageAlt: "Payment terminal and POS device",
     imagePosition: "left",
@@ -72,7 +72,7 @@ const categories = [
     id: "cat-cash-management",
     title: "Cash Management",
     icon: HandCoins,
-    gradient: "from-orange-500 to-red-600",
+    gradient: "from-brand-dark-blue to-brand-dark-green",
     image: "/cash-management.jpg",
     imageAlt: "Cash management and reconciliation",
     imagePosition: "right",
@@ -86,7 +86,7 @@ const categories = [
     id: "cat-remittance",
     title: "Money Remittance",
     icon: Send,
-    gradient: "from-purple-500 to-violet-600",
+    gradient: "from-brand-blue to-brand-green",
     image: "/money-remittance.jpg",
     imageAlt: "Money transfer and remittance services",
     imagePosition: "left",
@@ -100,7 +100,7 @@ const categories = [
     id: "cat-insurance",
     title: "Insurance",
     icon: Shield,
-    gradient: "from-sky-500 to-blue-600",
+    gradient: "from-brand-green to-brand-light-green",
     image: "/insurance.jpg",
     imageAlt: "Insurance protection and coverage",
     imagePosition: "right",
@@ -115,7 +115,7 @@ const categories = [
     id: "cat-travel",
     title: "Travel",
     icon: Plane,
-    gradient: "from-violet-600 to-purple-700",
+    gradient: "from-brand-dark-blue to-brand-green",
     image: "/travel.jpg",
     imageAlt: "Travel booking and flight tickets",
     imagePosition: "left",
@@ -130,8 +130,8 @@ const categories = [
     id: "cat-bills",
     title: "Bill Payments & Recharges",
     icon: Zap,
-    gradient: "from-yellow-500 to-amber-600",
-    image: "/bill-payments.jpeg",
+    gradient: "from-brand-light-blue to-brand-green",
+    image: "/bill-payments.png",
     imageAlt: "Bill payments and utility recharges",
     imagePosition: "right",
     services: [
@@ -190,7 +190,7 @@ const ServicesSection = () => {
     <section id="services" className="py-20 sm:py-28 lg:py-36 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-3xl opacity-30"
-        style={{ background: "radial-gradient(circle, hsl(217 91% 60% / 0.1), transparent)" }}
+        style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.12), transparent)" }}
       />
 
       <div className="container relative z-10">
@@ -230,6 +230,7 @@ const ServicesSection = () => {
                         className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110 will-change-transform"
                         loading="lazy"
                         decoding="async"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/placeholder.svg"; }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
                     </motion.div>
@@ -292,6 +293,7 @@ const ServicesSection = () => {
                         className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110 will-change-transform"
                         loading="lazy"
                         decoding="async"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/placeholder.svg"; }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
                     </motion.div>

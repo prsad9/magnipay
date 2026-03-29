@@ -291,8 +291,8 @@ export const HOVER_CLASSES = {
 export const BACKGROUND_CLASSES = {
   GRADIENT_ORB_TOP: "absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-[120px] opacity-20 pointer-events-none",
   GRADIENT_ORB_BOTTOM: "absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-15 pointer-events-none",
-  GRADIENT_LIGHT: "bg-gradient-to-br from-blue-500 to-purple-600",
-  GRADIENT_REVERSE: "bg-gradient-to-br from-purple-600 to-blue-500",
+  GRADIENT_LIGHT: "bg-gradient-to-br from-brand-blue to-brand-green",
+  GRADIENT_REVERSE: "bg-gradient-to-br from-brand-green to-brand-blue",
 } as const;
 
 // ============================================================================

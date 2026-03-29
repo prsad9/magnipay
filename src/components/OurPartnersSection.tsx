@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
 
 const partners = [
   { name: "HDFC Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg" },
@@ -30,6 +31,32 @@ const PartnerCard = ({ name, logo, index = 0 }: { name: string; logo: string; in
 );
 
 const OurPartnersSection = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollDiv = scrollRef.current;
+    if (!scrollDiv) return;
+
+    let scrollPos = 0;
+    const scrollSpeed = 1;
+    const maxScroll = scrollDiv.scrollWidth / 2 - scrollDiv.clientWidth;
+
+    const animate = () => {
+      scrollPos += scrollSpeed;
+      
+      // Reset to beginning when we reach midpoint for seamless loop
+      if (scrollPos >= maxScroll) {
+        scrollPos = 0;
+      }
+      
+      scrollDiv.scrollLeft = scrollPos;
+    };
+
+    const interval = setInterval(animate, 20);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative py-20 sm:py-28 lg:py-36 overflow-hidden">
       {/* Background gradient */}
@@ -58,32 +85,26 @@ const OurPartnersSection = () => {
         </motion.div>
       </div>
 
-      {/* Marquee rows */}
-      <div className="space-y-6 sm:space-y-8">
-        {/* Row 1 — scrolls left */}
-        <div className="relative group">
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
-          <div className="flex animate-marquee-left-slow group-hover:[animation-play-state:paused]">
-            {[...partners, ...partners].map((p, i) => (
-              <div key={i} className="mx-1.5 sm:mx-3">
-                <PartnerCard {...p} index={i % partners.length} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Row 2 — scrolls right */}
-        <div className="relative group">
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
-          <div className="flex animate-marquee-right-slow group-hover:[animation-play-state:paused]">
-            {[...partners.slice().reverse(), ...partners.slice().reverse()].map((p, i) => (
-              <div key={i} className="mx-1.5 sm:mx-3">
-                <PartnerCard {...p} index={i % partners.length} />
-              </div>
-            ))}
-          </div>
+      {/* Infinite scrolling line */}
+      <div className="relative group">
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
+        <div
+          ref={scrollRef}
+          className="flex gap-3 sm:gap-4 overflow-hidden scroll-smooth"
+          style={{ scrollBehavior: "auto" }}
+          onMouseEnter={() => {
+            if (scrollRef.current) scrollRef.current.style.animationPlayState = "paused";
+          }}
+          onMouseLeave={() => {
+            if (scrollRef.current) scrollRef.current.style.animationPlayState = "running";
+          }}
+        >
+          {[...partners, ...partners, ...partners, ...partners].map((p, i) => (
+            <div key={i} className="mx-1.5 sm:mx-3 flex-shrink-0">
+              <PartnerCard {...p} index={i % partners.length} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

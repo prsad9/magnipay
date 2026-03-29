@@ -62,9 +62,9 @@ const FeaturesSection = () => {
       {/* Premium gradient mesh */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-[120px] opacity-20"
-          style={{ background: "radial-gradient(circle, #2563EB, transparent)" }} />
+          style={{ background: "radial-gradient(circle, hsl(var(--primary)), transparent)" }} />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-15"
-          style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }} />
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary)), transparent)" }} />
       </div>
       <div className="absolute inset-0 opacity-[0.02]"
         style={{

@@ -47,7 +47,7 @@ const MagniPayLogo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
           x="20"
           y="25"
           textAnchor="middle"
-          fill="hsl(217 91% 60%)"
+          fill="#6BBF59"
           fontSize="14"
           fontWeight="700"
           fontFamily="League Spartan, sans-serif"
@@ -62,7 +62,7 @@ const MagniPayLogo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
           cx="20"
           cy="20"
           r="17"
-          stroke="hsl(187 92% 53% / 0.3)"
+          stroke="rgba(143, 217, 122, 0.45)"
           strokeWidth="1"
           fill="none"
           animate={{ r: [17, 19, 17], opacity: [0.3, 0.6, 0.3] }}
@@ -70,9 +70,9 @@ const MagniPayLogo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
         />
         <defs>
           <linearGradient id="logoGrad" x1="0" y1="0" x2="48" y2="48">
-            <stop offset="0%" stopColor="hsl(217 91% 60%)" />
-            <stop offset="50%" stopColor="hsl(263 70% 58%)" />
-            <stop offset="100%" stopColor="hsl(187 92% 53%)" />
+            <stop offset="0%" stopColor="#1B4F7A" />
+            <stop offset="50%" stopColor="#1F6FA9" />
+            <stop offset="100%" stopColor="#6BBF59" />
           </linearGradient>
         </defs>
       </motion.svg>

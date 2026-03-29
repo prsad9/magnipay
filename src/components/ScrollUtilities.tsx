@@ -27,10 +27,10 @@ export const ScrollProgress = () => {
         className="h-full rounded-r-full transition-[width] duration-150 ease-out"
         style={{
           width: `${progress}%`,
-          background: "linear-gradient(90deg, #2563EB, #6D28D9, #7C3AED)",
+          background: "linear-gradient(90deg, #1B4F7A, #1F6FA9, #6BBF59)",
           boxShadow:
             progress > 0
-              ? "0 0 8px rgba(37, 99, 235, 0.5), 0 0 20px rgba(124, 58, 237, 0.3)"
+              ? "0 0 8px rgba(31, 111, 169, 0.45), 0 0 20px rgba(107, 191, 89, 0.25)"
               : "none",
         }}
       />
@@ -72,8 +72,8 @@ export const BackToTop = () => {
           exit={{ opacity: 0, scale: 0.8 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="fixed bottom-6 right-6 z-50 lg:bottom-8 max-lg:bottom-24 p-3 rounded-full bg-gradient-to-br from-primary via-primary to-secondary 
-                     text-primary-foreground shadow-[0_0_20px_rgba(37,99,235,0.4)] 
-                     hover:shadow-[0_0_30px_rgba(37,99,235,0.8)] hover:scale-110
+                     text-primary-foreground shadow-[0_0_20px_rgba(31,111,169,0.34)] 
+                     hover:shadow-[0_0_30px_rgba(107,191,89,0.42)] hover:scale-110
                      transition-all duration-300 active:scale-95"
           aria-label="Back to top"
         >
@@ -118,7 +118,7 @@ export const MobileCTA = () => {
           {/* Content */}
           <div className="relative px-4 py-5 flex gap-3 items-center justify-between">
             <div className="flex flex-col gap-0.5 min-w-0">
-              <div className="text-[10px] sm:text-xs font-semibold text-amber-400 tracking-wider">READY TO GET STARTED?</div>
+              <div className="text-[10px] sm:text-xs font-semibold text-secondary tracking-wider">READY TO GET STARTED?</div>
               <div className="text-xs sm:text-sm text-slate-200 truncate">Get exclusive access to MagniPay features</div>
             </div>
             
@@ -127,8 +127,8 @@ export const MobileCTA = () => {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               className="flex-shrink-0 px-5 sm:px-9 py-3 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-white text-sm sm:text-lg
-                         bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#3b82f6] hover:to-[#8b5cf6]
-                         shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(124,58,237,0.6)]
+                         bg-gradient-to-r from-brand-blue to-brand-green hover:brightness-110
+                         shadow-[0_0_25px_rgba(31,111,169,0.35)] hover:shadow-[0_0_35px_rgba(107,191,89,0.4)]
                          transition-all duration-300 flex items-center gap-2"
             >
               <Mail size={18} />
