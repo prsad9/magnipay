@@ -16,7 +16,7 @@ const categories = [
     title: "Collections",
     icon: Layers,
     gradient: "from-blue-500 to-indigo-600",
-    image: "/collections.jpg",
+    image: "/collections.jpeg",
     imageAlt: "QR code payment collection",
     imagePosition: "right",
     services: [
@@ -58,7 +58,7 @@ const categories = [
     title: "Payment Services",
     icon: CreditCard,
     gradient: "from-indigo-500 to-blue-600",
-    image: "/payment-services.jpg",
+    image: "/payment-services.jpeg",
     imageAlt: "Payment terminal and POS device",
     imagePosition: "left",
     services: [
@@ -131,7 +131,7 @@ const categories = [
     title: "Bill Payments & Recharges",
     icon: Zap,
     gradient: "from-yellow-500 to-amber-600",
-    image: "/bill-payments.png",
+    image: "/bill-payments.jpeg",
     imageAlt: "Bill payments and utility recharges",
     imagePosition: "right",
     services: [
