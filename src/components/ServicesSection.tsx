@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  QrCode, ArrowRightLeft, Banknote,
-  Smartphone, RefreshCcw, Search, Layers, X,
-  Landmark, Shield, Car, Bike, Truck, Bus, TrainFront, Plane,
-  Phone, Tv, Zap, Receipt, Fingerprint, Wallet, Building2,
-  PackageCheck, ShoppingCart, Send, CreditCard, Globe, IndianRupee,
-  HandCoins, CircleDollarSign, BadgePercent, Heart, LifeBuoy, Hotel,
-  Gift, CheckCircle, Home, GraduationCap,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { LuQrCode as QrCode, LuArrowRightLeft as ArrowRightLeft, LuBanknote as Banknote, LuSmartphone as Smartphone, LuRefreshCcw as RefreshCcw, LuSearch as Search, LuLayers as Layers, LuLandmark as Landmark, LuShield as Shield, LuCar as Car, LuBike as Bike, LuTruck as Truck, LuBus as Bus, LuTrainFront as TrainFront, LuPlane as Plane, LuPhone as Phone, LuTv as Tv, LuZap as Zap, LuReceipt as Receipt, LuFingerprint as Fingerprint, LuWallet as Wallet, LuBuilding2 as Building2, LuPackageCheck as PackageCheck, LuShoppingCart as ShoppingCart, LuSend as Send, LuCreditCard as CreditCard, LuGlobe as Globe, LuIndianRupee as IndianRupee, LuHandCoins as HandCoins, LuCircleDollarSign as CircleDollarSign, LuBadgePercent as BadgePercent, LuHeart as Heart, LuLifeBuoy as LifeBuoy, LuHotel as Hotel, LuGift as Gift, LuCircleCheck as CheckCircle, LuHouse as Home, LuGraduationCap as GraduationCap } from "react-icons/lu";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const categories = [
   {
@@ -145,17 +138,138 @@ const categories = [
   },
 ];
 
-import type { LucideIcon } from "lucide-react";
+const firstSentence = (text: string) => {
+  const sentence = text.split(".")[0]?.trim();
+  return sentence ? `${sentence}.` : "";
+};
 
-type ModalState = {
-  icon: LucideIcon;
-  title: string;
-  greeting: string;
-  longDesc: string;
-} | null;
+const getServicesForCategory = (cat: (typeof categories)[number]) => {
+  if (cat.id === "cat-insurance") {
+    return [
+      {
+        icon: Heart,
+        title: "Health Insurance",
+        desc: "Comprehensive health coverage with cashless treatment across network hospitals.",
+        greeting: "",
+        longDesc:
+          "Hospitalization, diagnostics, and preventive care with fast claims and wide hospital coverage.",
+      },
+      {
+        icon: LifeBuoy,
+        title: "Term Life Insurance",
+        desc: "Affordable life cover to protect your family with flexible tenure options.",
+        greeting: "",
+        longDesc:
+          "Get high-value coverage, instant policy issuance, and simplified claims for long-term financial security.",
+      },
+      {
+        icon: Car,
+        title: "Vehicle Insurance",
+        desc: "Combined car and bike protection with fast digital claims and repair network support.",
+        greeting: "",
+        longDesc:
+          "Covers own-damage and third-party liability, with roadside assistance and quick settlements.",
+      },
+    ];
+  }
+
+  if (cat.id === "cat-travel") {
+    return [
+      {
+        icon: TrainFront,
+        title: "Bus & Train Tickets",
+        desc: "Book bus and train tickets with real-time availability and instant confirmations.",
+        greeting: "",
+        longDesc:
+          "Compare routes, select seats quickly, and manage cancellations with faster refunds.",
+      },
+      {
+        icon: Plane,
+        title: "Flight Booking",
+        desc: "Compare and book domestic or international flights with flexible payment options.",
+        greeting: "",
+        longDesc:
+          "Access airline offers, instant confirmations, and easy rebooking support from one dashboard.",
+      },
+      {
+        icon: Hotel,
+        title: "Hotel Booking",
+        desc: "Find and book hotels with verified reviews, better rates, and flexible cancellation.",
+        greeting: "",
+        longDesc:
+          "Filter by budget and amenities, secure your stay in minutes, and manage bookings with ease.",
+      },
+    ];
+  }
+
+  if (cat.id === "cat-bills") {
+    return [
+      {
+        icon: Phone,
+        title: "Mobile & DTH Recharge",
+        desc: "Recharge mobile and DTH plans instantly for all major operators.",
+        greeting: "",
+        longDesc:
+          "Supports prepaid, postpaid, and DTH plans with instant activation and digital receipts.",
+      },
+      {
+        icon: Receipt,
+        title: "Utility & Household Bills",
+        desc: "Pay electricity, gas, water, broadband, and rent from one place.",
+        greeting: "",
+        longDesc:
+          "Track due dates, enable reminders, and keep all payment records organized in one timeline.",
+      },
+      {
+        icon: GraduationCap,
+        title: "Education Fee Payment",
+        desc: "Pay school, college, and course fees securely with instant confirmation.",
+        greeting: "",
+        longDesc:
+          "Handle tuition, hostel, and exam fees with fast processing and downloadable receipts.",
+      },
+    ];
+  }
+
+  if (cat.id === "cat-payment-services") {
+    return [
+      {
+        icon: QrCode,
+        title: "Bharat QR",
+        desc: "One interoperable QR for UPI and major card networks.",
+        greeting: "",
+        longDesc:
+          "Use one QR to simplify in-store collections with reliable acceptance across payment rails.",
+      },
+      {
+        icon: CreditCard,
+        title: "POS & mPOS",
+        desc: "Accept cards, UPI, and wallets from any compatible smart device.",
+        greeting: "",
+        longDesc:
+          "Turn existing devices into payment terminals with secure transactions and real-time sales tracking.",
+      },
+      {
+        icon: Building2,
+        title: "Gateway & Onboarding",
+        desc: "Launch online payments and merchant setup with one streamlined flow.",
+        greeting: "",
+        longDesc:
+          "Go live faster with integrated gateway support, KYC onboarding, and settlement-ready account setup.",
+      },
+    ];
+  }
+
+  return cat.services
+    .map((s) => ({
+      ...s,
+      greeting: "",
+      longDesc: `${s.desc} ${firstSentence(s.longDesc)}`.trim(),
+    }))
+    .slice(0, 3);
+};
 
 const ServicesSection = () => {
-  const [activeModal, setActiveModal] = useState<ModalState>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -165,19 +279,6 @@ const ServicesSection = () => {
     mq.addEventListener("change", update);
     return () => mq.removeEventListener("change", update);
   }, []);
-
-  // Handle Escape key to close modal
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setActiveModal(null);
-      }
-    };
-    if (activeModal) {
-      window.addEventListener("keydown", handleEscape);
-      return () => window.removeEventListener("keydown", handleEscape);
-    }
-  }, [activeModal]);
 
   const baseMotion = {
     initial: isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
@@ -196,21 +297,22 @@ const ServicesSection = () => {
       <div className="container relative z-10">
         <motion.div
           {...baseMotion}
-          className="text-center mb-12 sm:mb-14 lg:mb-16"
+          className="text-center mb-14 sm:mb-16 lg:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 capsule bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 capsule bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-5">
             Our Solutions
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-3">
+          <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4">
             Payment <span className="text-gradient">Solutions</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-pretty text-sm sm:text-base lg:text-lg">
+          <p className="text-muted-foreground/90 max-w-2xl mx-auto text-pretty text-sm sm:text-base lg:text-xl leading-relaxed">
             Complete payment infrastructure for every business need.
           </p>
         </motion.div>
 
         <div className="space-y-10 sm:space-y-12 lg:space-y-16">
           {categories.map((cat, catIdx) => {
+            const services = getServicesForCategory(cat);
             // For all sections with images
             return (
               <div key={cat.title} id={cat.id} className="contain-content">
@@ -243,39 +345,48 @@ const ServicesSection = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, amount: 0.2 }}
                       transition={{ duration: isMobile ? 0.1 : 0.6, ease: [0.16, 1, 0.3, 1] }}
-                      className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5"
+                      className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6"
                     >
-                      <div className={`p-2 sm:p-2.5 rounded-lg bg-gradient-to-br ${cat.gradient} shadow-lg`}>
+                      <div className="p-2.5 sm:p-3 rounded-full bg-brand-green shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_8px_24px_rgba(74,158,62,0.35)]">
                         <cat.icon size={16} className="text-white sm:hidden" />
                         <cat.icon size={20} className="text-white hidden sm:block" />
                       </div>
-                      <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold">{cat.title}</h3>
+                      <div>
+                        <p className="text-[11px] sm:text-xs uppercase tracking-[0.18em] text-primary/80 font-semibold mb-1">Category</p>
+                        <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold leading-tight">{cat.title}</h3>
+                      </div>
                     </motion.div>
-                    <div className="space-y-2 sm:space-y-3">
-                      {cat.services.map((s, i) => (
-                        <motion.button
+                    <Accordion type="single" collapsible className="space-y-2.5 sm:space-y-3">
+                      {services.map((s, i) => (
+                        <motion.div
                           key={s.title}
-                          className="neon-card p-3 sm:p-4 group text-left w-full flex items-start gap-3 hover:border-primary/60 transition-all duration-200 cursor-pointer"
-                          onClick={() => setActiveModal({ icon: s.icon, title: s.title, greeting: s.greeting, longDesc: s.longDesc })}
                           initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true, amount: 0.2 }}
-                          transition={{ duration: isMobile ? 0.1 : 0.6, delay: isMobile ? 0 : i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                          type="button"
+                          transition={{ duration: isMobile ? 0.1 : 0.6, delay: isMobile ? 0 : i * 0.06, ease: [0.16, 1, 0.3, 1] }}
                         >
-                          {/* Icon */}
-                          <div className={`rounded-lg bg-gradient-to-br ${cat.gradient} transform group-hover:scale-110 transition-transform duration-200 flex-shrink-0 p-2 will-change-transform`}>
-                            <s.icon size={16} className="text-white" />
-                          </div>
-
-                          {/* Content */}
-                          <div className="flex-1 min-w-0">
-                            <h4 className="text-xs sm:text-sm font-semibold mb-0.5 line-clamp-1">{s.title}</h4>
-                            <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-2">{s.desc}</p>
-                          </div>
-                        </motion.button>
+                          <AccordionItem value={`${cat.id}-${i}`} className="neon-card rounded-2xl border border-border/45 px-4 sm:px-5 data-[state=open]:border-primary/40">
+                            <AccordionTrigger className="py-4 sm:py-5 hover:no-underline">
+                              <div className="flex items-start gap-3 text-left">
+                                <div className="rounded-full bg-brand-green p-2.5 flex-shrink-0 shadow-[0_0_0_1px_rgba(255,255,255,0.14),0_8px_20px_rgba(74,158,62,0.32)] mt-0.5">
+                                  <s.icon size={16} className="text-white" />
+                                </div>
+                                <div className="min-w-0">
+                                  <h4 className="text-sm sm:text-base lg:text-lg font-semibold mb-1 leading-snug text-foreground">{s.title}</h4>
+                                  <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">{s.desc}</p>
+                                </div>
+                              </div>
+                            </AccordionTrigger>
+                            <AccordionContent className="pb-5 sm:pb-6 pl-[52px] sm:pl-[58px]">
+                              <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed mb-4">{s.longDesc}</p>
+                              <a href="#contact" className="inline-flex items-center text-sm font-semibold text-primary hover:text-primary/85 transition-colors">
+                                Get Service
+                              </a>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </motion.div>
                       ))}
-                    </div>
+                    </Accordion>
                   </div>
 
                   {/* Image on Right */}
@@ -304,63 +415,6 @@ const ServicesSection = () => {
           })}
         </div>
       </div>
-
-      {/* Service Detail Modal */}
-      <AnimatePresence>
-        {activeModal && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-background/60 backdrop-blur-xl"
-              onClick={() => setActiveModal(null)}
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0)" }}
-              exit={{ opacity: 0, scale: 0.95, y: 20, filter: "blur(8px)" }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
-              onClick={(e) => e.currentTarget === e.target && setActiveModal(null)}
-            >
-              <div className="max-h-[90vh] overflow-y-auto w-full max-w-3xl p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl 
-                              bg-gradient-to-br from-[#E5E7EB] to-[#F3F4F6] 
-                              dark:from-neutral-900/98 dark:to-neutral-800/95
-                              backdrop-blur-xl border border-[#D1D5DB] dark:border-white/20 
-                              shadow-[0_25px_80px_rgba(0,0,0,0.15)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.6)]
-                              relative"
-              >
-                <button
-                  onClick={() => setActiveModal(null)}
-                  className="absolute top-6 right-6 p-2 rounded-lg hover:bg-white/10 dark:hover:bg-white/5 transition-colors"
-                  type="button"
-                  aria-label="Close modal"
-                >
-                  <X size={24} />
-                </button>
-
-                {activeModal.greeting && (
-                  <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-blue-600">
-                    {activeModal.greeting}
-                  </h2>
-                )}
-
-                <div className="inline-flex p-4 rounded-xl bg-gradient-to-br from-primary to-accent mb-6">
-                  <activeModal.icon size={32} className="text-white" />
-                </div>
-
-                <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-foreground">{activeModal.title}</h3>
-                <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-10">{activeModal.longDesc}</p>
-                <a href="#contact" onClick={() => setActiveModal(null)} className="btn-cta text-base inline-block px-8 py-3">
-                  Get Service →
-                </a>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
     </section>
   );
 };

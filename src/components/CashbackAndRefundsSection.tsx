@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Gift, BadgePercent, Heart, CheckCircle, RefreshCcw, X,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+  LuGift as Gift,
+  LuBadgePercent as BadgePercent,
+  LuHeart as Heart,
+  LuCircleCheck as CheckCircle,
+  LuRefreshCcw as RefreshCcw,
+  LuChevronRight as ChevronRight,
+  LuX as X,
+} from "react-icons/lu";
+import type { IconType as LucideIcon } from "react-icons";
 
 type ModalState = {
   icon: LucideIcon;
@@ -16,8 +22,9 @@ const categories = [
   {
     id: "cat-rewards",
     title: "Cashback & Rewards",
+    subtitle: "Earn more on every successful transaction",
     icon: Gift,
-    gradient: "from-pink-500 to-rose-600",
+    gradient: "from-pink-500 to-rose-500",
     services: [
       { icon: Gift, title: "Cashback Program", desc: "Earn cashback on every transaction made. Instant rewards that can be redeemed or transferred instantly.", greeting: "Thanks for choosing Cashback Program! Earn up to 2% on every transaction with instant rewards and no expiry.", longDesc: "Get rewarded for every purchase and payment. Earn up to 2% cashback on transactions made through Magnipay. Rewards are credited instantly and can be used for future transactions or transferred to your bank account. No minimum balance required, no expiry dates, and transparent earning rules." },
       { icon: BadgePercent, title: "Loyalty Rewards", desc: "Accumulate points on every purchase and payment. Exchange points for discounts, products, or cash vouchers.", greeting: "Thanks for choosing Loyalty Rewards! Accumulate points faster with exclusive bonuses and partner discounts.", longDesc: "Build loyalty points with every transaction on Magnipay. Accumulate points faster with higher transaction volumes and exclusive milestone bonuses. Redeem points for discounts on partner merchant stores, exclusive product vouchers, or convert directly to cash. Higher tier members get bonus points on all transactions." },
@@ -27,8 +34,9 @@ const categories = [
   {
     id: "cat-refunds",
     title: "Easy Payments & Easy Refunds",
+    subtitle: "Fast checkout and transparent refund handling",
     icon: RefreshCcw,
-    gradient: "from-teal-500 to-emerald-600",
+    gradient: "from-teal-500 to-emerald-500",
     services: [
       { icon: CheckCircle, title: "One-Click Payments", desc: "Pre-saved payment methods for instant checkout. Complete payments in seconds without re-entering details.", greeting: "Thanks for choosing One-Click Payments! Save methods securely and checkout in seconds with bank-level encryption.", longDesc: "Save payment methods securely for faster checkouts. Complete transactions with a single click without re-entering card or bank details. Bank-level encryption protects your information, and you can manage saved payment methods anytime. Perfect for repeat purchases and subscriptions." },
       { icon: RefreshCcw, title: "Instant Refunds", desc: "Refund processing in real-time to the original payment method. No waiting, no middleman delays.", greeting: "Thanks for choosing Instant Refunds! Get refunds instantly within minutes to your original payment method.", longDesc: "Get refunds instantly to your original payment method within minutes. Real-time processing means no waiting for bank working days. Automated refund initiation for eligible transactions, instant SMS/email notification of refund status, and dedicated support for any refund inquiries." },
@@ -38,17 +46,7 @@ const categories = [
 
 const CashbackAndRefundsSection = () => {
   const [activeModal, setActiveModal] = useState<ModalState>(null);
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 768px)");
-    const update = () => setIsMobile(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
-  // Handle Escape key to close modal
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -61,83 +59,80 @@ const CashbackAndRefundsSection = () => {
     }
   }, [activeModal]);
 
-  const baseMotion = {
-    initial: isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 0, y: 20, filter: "blur(6px)" },
-    whileInView: isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 1, y: 0, filter: "blur(0)" },
-    viewport: { once: true, amount: 0.2 },
-    transition: { duration: isMobile ? 0.2 : 0.6, ease: [0.16, 1, 0.3, 1] },
-  };
-
   return (
-    <section id="cashback-refunds" className="py-20 sm:py-28 lg:py-36 relative overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-neutral-900 dark:to-neutral-800">
-      {/* Background decorative elements */}
-      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-20"
-        style={{ background: "radial-gradient(circle, hsl(333 71% 51% / 0.15), transparent)" }}
-      />
-      <div className="absolute top-1/4 -left-32 w-[300px] h-[300px] rounded-full blur-3xl opacity-15"
-        style={{ background: "radial-gradient(circle, hsl(174 83% 31% / 0.15), transparent)" }}
-      />
+    <section id="cashback-refunds" className="relative overflow-hidden py-20 sm:py-28 lg:py-36">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_45%_at_50%_0%,hsl(var(--primary)/0.1),transparent_72%)]" />
+      <div className="pointer-events-none absolute -left-16 top-24 h-64 w-64 rounded-full bg-pink-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-16 bottom-12 h-64 w-64 rounded-full bg-teal-500/10 blur-3xl" />
 
       <div className="container relative z-10">
         <motion.div
-          {...baseMotion}
-          className="text-center mb-8 sm:mb-10 lg:mb-12"
+          initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto mb-10 max-w-3xl text-center sm:mb-12 lg:mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 capsule bg-pink-500/10 border border-pink-500/20 text-pink-600 dark:text-pink-400 text-xs font-semibold uppercase tracking-wider mb-2">
-            Rewards & Benefits
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+            Rewards & Refunds
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-2">
-            Cashback <span className="text-gradient">& Refunds</span>
+          <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+            Cashback & Refunds,
+            <span className="text-gradient"> Simplified</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-pretty text-xs sm:text-sm lg:text-base">
-            Earn rewards on every transaction and enjoy seamless refund processing.
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base lg:text-lg">
+            Clear benefits, fast actions, and support-first policies in one clean experience.
           </p>
         </motion.div>
 
-        {/* Two columns side by side */}
         <div className="grid gap-6 sm:gap-8 lg:gap-10 lg:grid-cols-2">
           {categories.map((cat) => (
             <motion.div
               key={cat.id}
-              initial={isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 0, y: 20, filter: "blur(6px)" }}
+              initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: isMobile ? 0.2 : 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="p-6 sm:p-8 rounded-2xl border border-white/20 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:border-white/30 dark:hover:border-white/20"
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="rounded-3xl border border-black/5 bg-white/70 p-6 shadow-[0_18px_45px_rgba(2,8,20,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.03] sm:p-8"
             >
-              {/* Category Header */}
-              <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                <div className={`p-2 sm:p-3 rounded-xl bg-gradient-to-br ${cat.gradient} shadow-lg flex-shrink-0`}>
-                  <cat.icon size={20} className="text-white sm:size-24" />
+              <div className="mb-6 flex items-center gap-3">
+                <div className="relative h-11 w-11 shrink-0">
+                  <span className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${cat.gradient} opacity-50 blur-md`} />
+                  <div className={`relative flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br ${cat.gradient} shadow-[0_12px_28px_rgba(0,0,0,0.22)]`}>
+                    <cat.icon size={20} className="text-white" />
+                  </div>
                 </div>
                 <div>
-                  <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-foreground">{cat.title}</h3>
+                  <h3 className="font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">{cat.title}</h3>
+                  <p className="mt-0.5 text-xs text-muted-foreground sm:text-sm">{cat.subtitle}</p>
                 </div>
               </div>
 
-              {/* Services Grid */}
-              <div className="space-y-2 sm:space-y-3">
+              <div className="space-y-3">
                 {cat.services.map((s, i) => (
                   <motion.button
                     key={s.title}
-                    className="neon-card p-3 sm:p-4 group text-left w-full flex items-start gap-3 hover:border-primary/60 transition-all duration-300 cursor-pointer"
+                    className="group flex w-full items-start gap-3 rounded-2xl border border-black/5 bg-background/80 p-4 text-left transition-all duration-200 hover:border-primary/35 hover:bg-background dark:border-white/10"
                     onClick={() => setActiveModal({ icon: s.icon, title: s.title, greeting: s.greeting, longDesc: s.longDesc })}
-                    initial={isMobile ? { opacity: 1, y: 0, filter: "blur(0)" } : { opacity: 0, y: 20, filter: "blur(6px)" }}
+                    initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
                     whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
                     viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: isMobile ? 0.25 : 0.6, delay: isMobile ? 0 : i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.45, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
                     type="button"
                   >
-                    {/* Icon */}
-                    <div className={`rounded-lg bg-gradient-to-br ${cat.gradient} transform group-hover:scale-110 transition-transform duration-300 flex-shrink-0 p-2`}>
-                      <s.icon size={14} className="text-white" />
+                    <div className="relative mt-0.5 h-9 w-9 shrink-0">
+                      <span className={`absolute inset-0 rounded-xl bg-gradient-to-br ${cat.gradient} opacity-45 blur-md transition-opacity duration-200 group-hover:opacity-70`} />
+                      <div className={`relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${cat.gradient} shadow-[0_8px_18px_rgba(0,0,0,0.18)]`}>
+                        <s.icon size={15} className="text-white" />
+                      </div>
                     </div>
 
-                    {/* Content */}
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-xs sm:text-sm font-semibold mb-0.5 line-clamp-1">{s.title}</h4>
-                      <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-2">{s.desc}</p>
+                      <h4 className="text-sm font-semibold text-foreground sm:text-base">{s.title}</h4>
+                      <p className="mt-1 text-xs leading-relaxed text-muted-foreground sm:text-sm">{s.desc}</p>
                     </div>
+
+                    <ChevronRight size={16} className="mt-1 shrink-0 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5" />
                   </motion.button>
                 ))}
               </div>
@@ -146,7 +141,6 @@ const CashbackAndRefundsSection = () => {
         </div>
       </div>
 
-      {/* Service Detail Modal */}
       <AnimatePresence>
         {activeModal && (
           <>
@@ -155,7 +149,7 @@ const CashbackAndRefundsSection = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-background/60 backdrop-blur-xl"
+              className="fixed inset-0 z-40 bg-black/35 backdrop-blur-sm"
               onClick={() => setActiveModal(null)}
             />
             <motion.div
@@ -166,36 +160,41 @@ const CashbackAndRefundsSection = () => {
               className="fixed inset-0 z-50 flex items-center justify-center p-4"
               onClick={(e) => e.currentTarget === e.target && setActiveModal(null)}
             >
-              <div className="max-h-[90vh] overflow-y-auto w-full max-w-3xl p-8 sm:p-12 rounded-3xl 
-                              bg-gradient-to-br from-[#E5E7EB] to-[#F3F4F6] 
-                              dark:from-neutral-900/98 dark:to-neutral-800/95
-                              backdrop-blur-xl border border-[#D1D5DB] dark:border-white/20 
-                              shadow-[0_25px_80px_rgba(0,0,0,0.15)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.6)]
-                              relative"
+              <div
+                className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border border-black/10 bg-white/92 p-7 shadow-[0_25px_80px_rgba(2,8,20,0.22)] backdrop-blur-xl dark:border-white/15 dark:bg-neutral-900/92 sm:p-10"
               >
                 <button
                   onClick={() => setActiveModal(null)}
-                  className="absolute top-6 right-6 p-2 rounded-lg hover:bg-white/10 dark:hover:bg-white/5 transition-colors"
+                  className="absolute right-5 top-5 rounded-xl p-2 text-muted-foreground transition-colors hover:bg-black/5 hover:text-foreground dark:hover:bg-white/10"
                   type="button"
                   aria-label="Close modal"
                 >
-                  <X size={24} />
+                  <X size={20} />
                 </button>
 
                 {activeModal.greeting && (
-                  <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-blue-600">
+                  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                     {activeModal.greeting}
-                  </h2>
+                  </p>
                 )}
 
-                <div className="inline-flex p-4 rounded-xl bg-gradient-to-br from-primary to-accent mb-6">
-                  <activeModal.icon size={32} className="text-white" />
+                <div className="relative mb-5 inline-flex h-[52px] w-[52px] items-center justify-center">
+                  <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-accent opacity-55 blur-md" />
+                  <span className="relative inline-flex rounded-2xl bg-gradient-to-br from-primary to-accent p-3.5 shadow-[0_12px_28px_rgba(0,0,0,0.24)]">
+                    <activeModal.icon size={24} className="text-white" />
+                  </span>
                 </div>
 
-                <h3 className="font-display text-3xl sm:text-4xl font-bold mb-6 text-foreground">{activeModal.title}</h3>
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-10">{activeModal.longDesc}</p>
-                <a href="#contact" onClick={() => setActiveModal(null)} className="btn-cta text-base inline-block px-8 py-3">
-                  Get Service →
+                <h3 className="font-display mb-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                  {activeModal.title}
+                </h3>
+                <p className="mb-8 text-sm leading-relaxed text-muted-foreground sm:text-base lg:text-lg">{activeModal.longDesc}</p>
+                <a
+                  href="#contact"
+                  onClick={() => setActiveModal(null)}
+                  className="inline-flex items-center rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+                >
+                  Get service
                 </a>
               </div>
             </motion.div>

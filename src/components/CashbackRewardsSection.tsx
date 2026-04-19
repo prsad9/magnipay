@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CircleDollarSign, Gift, Zap, TrendingUp } from "lucide-react";
+import { LuCircleDollarSign as CircleDollarSign, LuGift as Gift, LuZap as Zap, LuTrendingUp as TrendingUp } from "react-icons/lu";
 
 const rewards = [
   {

@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Shield, Wifi, Battery, Signal, Check } from "lucide-react";
+import { LuArrowUpRight as ArrowUpRight, LuChevronRight as ChevronRight, LuShield as Shield, LuWifi as Wifi, LuBattery as Battery, LuSignal as Signal, LuCheck as Check } from "react-icons/lu";
+import GradientText from "./GradientText";
+import { Ripple } from "@/components/ui/ripple";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 const bgIcons = ["₹", "🔍", "💳", "⚡", "🏦", "₹", "🔍", "💳"];
 
@@ -185,7 +189,7 @@ const SuccessNotification = () => (
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative py-20 sm:py-28 lg:py-36 flex items-center hero-bg overflow-hidden">
+    <section id="home" className="relative py-20 sm:py-28 lg:py-36 flex items-center overflow-hidden">
       {/* Background fintech icons */}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none overflow-hidden">
         {bgIcons.map((icon, i) => (
@@ -234,9 +238,29 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="inline-flex items-center gap-2 px-5 py-2 capsule bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8">
-                <span className="w-2 h-2 rounded-full bg-primary animate-neon-pulse" />
-                Trusted by 13,000+ Merchants
+              <div className="group relative mx-0 mb-8 inline-flex items-center justify-center rounded-full px-4 py-1.5 shadow-[inset_0_-8px_10px_hsl(var(--primary)_/_0.12)] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_hsl(var(--primary)_/_0.22)]">
+                <span
+                  className="animate-gradient absolute inset-0 block h-full w-full rounded-[inherit] bg-gradient-to-r from-[hsl(var(--primary)/0.55)] via-[hsl(var(--secondary)/0.55)] to-[hsl(var(--primary)/0.55)] bg-[length:300%_100%] p-[1px]"
+                  style={{
+                    WebkitMask:
+                      "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                    WebkitMaskComposite: "destination-out",
+                    mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                    maskComposite: "subtract",
+                    WebkitClipPath: "padding-box",
+                  }}
+                />
+                <span className="relative z-10 text-sm">🎉</span>
+                <hr className="relative z-10 mx-2 h-4 w-px shrink-0 bg-primary/35" />
+                <AnimatedGradientText
+                  className="relative z-10 text-sm font-medium"
+                  colorFrom="#1F6FA9"
+                  colorTo="#6BBF59"
+                  speed={1.5}
+                >
+                  Trusted by 13,000+ Merchants
+                </AnimatedGradientText>
+                <ChevronRight className="relative z-10 ml-1 size-4 stroke-primary/60 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
               </div>
             </motion.div>
 
@@ -248,7 +272,14 @@ const HeroSection = () => {
               style={{ lineHeight: '1.05' }}
             >
               Keep Your Money{" "}
-              <span className="text-gradient">Moving Forward</span>
+              <GradientText
+                colors={["#1F6FA9", "#3B8FC4", "#6BBF59", "#8FD97A"]}
+                animationSpeed={8}
+                showBorder={false}
+                className="mx-0 inline-flex cursor-default p-0 align-baseline"
+              >
+                Moving Forward
+              </GradientText>
             </motion.h1>
 
             <motion.p
@@ -266,19 +297,23 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="grid grid-cols-3 gap-3 sm:gap-4 mb-8 sm:mb-10 py-4 sm:py-6 px-4 sm:px-6 rounded-2xl bg-gradient-to-br from-white/50 to-white/30 dark:from-black/60 dark:to-neutral-900/50 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+              className="mb-8 sm:mb-10"
             >
-              <div>
-                <div className="text-lg sm:text-2xl font-bold text-gradient">₹2.4Cr+</div>
-                <div className="text-[10px] sm:text-xs text-muted-foreground">Daily Volume</div>
-              </div>
-              <div>
-                <div className="text-lg sm:text-2xl font-bold text-gradient">13K+</div>
-                <div className="text-[10px] sm:text-xs text-muted-foreground">Active Merchants</div>
-              </div>
-              <div>
-                <div className="text-lg sm:text-2xl font-bold text-gradient">99.99%</div>
-                <div className="text-[10px] sm:text-xs text-muted-foreground">Uptime SLA</div>
+              <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch max-w-2xl">
+                <div className="pr-3 sm:pr-6">
+                  <div className="text-lg sm:text-2xl font-bold text-gradient">₹2.4Cr+</div>
+                  <div className="text-[10px] sm:text-xs text-muted-foreground">Daily Volume</div>
+                </div>
+                <div className="w-px self-stretch bg-border/35" />
+                <div className="px-3 sm:px-6">
+                  <div className="text-lg sm:text-2xl font-bold text-gradient">13K+</div>
+                  <div className="text-[10px] sm:text-xs text-muted-foreground">Active Merchants</div>
+                </div>
+                <div className="w-px self-stretch bg-border/35" />
+                <div className="pl-3 sm:pl-6">
+                  <div className="text-lg sm:text-2xl font-bold text-gradient">99.99%</div>
+                  <div className="text-[10px] sm:text-xs text-muted-foreground">Uptime SLA</div>
+                </div>
               </div>
             </motion.div>
 
@@ -288,18 +323,29 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-wrap gap-4"
             >
-              <a href="#contact" className="btn-cta text-sm sm:text-base inline-flex items-center gap-2 !px-7 sm:!px-10 !py-3 sm:!py-4 group">
-                Contact Us
-                <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />
-              </a>
-              <a href="#services" className="btn-gradient inline-flex items-center gap-2 text-sm sm:text-base">
-                Explore Services
-              </a>
+              <RainbowButton asChild className="h-12 rounded-full px-9 text-base sm:h-14 sm:px-12 sm:text-lg">
+                <a href="#contact">Contact Us</a>
+              </RainbowButton>
+              <RainbowButton asChild variant="outline" className="h-12 rounded-full px-9 text-base sm:h-14 sm:px-12 sm:text-lg">
+                <a href="#services">Explore Services</a>
+              </RainbowButton>
             </motion.div>
           </div>
 
           {/* Premium Phone Mockup Visual */}
           <div className="relative flex items-center justify-center min-h-[400px] sm:min-h-[460px] lg:min-h-[520px] mt-6 lg:mt-0">
+            {/* Ripple exactly behind phone */}
+            <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+              <div className="relative h-[360px] w-[280px] sm:h-[460px] sm:w-[360px] md:h-[520px] md:w-[420px]">
+                <Ripple
+                  mainCircleSize={220}
+                  mainCircleOpacity={0.15}
+                  numCircles={5}
+                  className="opacity-45 mix-blend-screen"
+                />
+              </div>
+            </div>
+
             {/* Magnetic field lines - hidden on small mobile */}
             {[0, 1, 2].map((i) => (
               <motion.div
@@ -339,14 +385,14 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Orbiting dot - hidden on mobile */}
-            <motion.div
+            {/* <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
               className="absolute w-[340px] h-[340px] hidden sm:block"
               style={{ transformOrigin: "center center" }}
             >
               <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent shadow-[0_0_12px_hsl(var(--accent)_/_0.6)]" />
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </div>

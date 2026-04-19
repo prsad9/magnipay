@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import {
-  ArrowLeft, Shield, Database, MapPin, Cookie, ExternalLink, Lock, UserCheck, Mail,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { LuArrowLeft as ArrowLeft, LuShield as Shield, LuDatabase as Database, LuMapPin as MapPin, LuCookie as Cookie, LuExternalLink as ExternalLink, LuLock as Lock, LuUserCheck as UserCheck, LuMail as Mail } from "react-icons/lu";
+import type { IconType as LucideIcon } from "react-icons";
 
 /* ── helpers ───────────────────────────────────── */
 const Bullet = ({ children }: { children: React.ReactNode }) => (

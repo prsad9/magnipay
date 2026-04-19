@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Zap, Smartphone, TrendingUp, Headphones, ShieldCheck, Wallet, Sparkles, ArrowRight } from "lucide-react";
+import { LuZap as Zap, LuSmartphone as Smartphone, LuTrendingUp as TrendingUp, LuHeadphones as Headphones, LuShieldCheck as ShieldCheck, LuWallet as Wallet, LuSparkles as Sparkles, LuArrowRight as ArrowRight } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 const features = [

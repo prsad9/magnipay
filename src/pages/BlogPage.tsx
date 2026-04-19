@@ -1,10 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  Smartphone, Shield, TrendingUp, CreditCard, Globe, Zap, Wallet,
-  Users, Banknote, ArrowRight, ArrowLeft, BookOpen, QrCode, Landmark,
-  Wifi, IndianRupee, BadgeCheck, ShieldCheck, PiggyBank
-} from "lucide-react";
+import { LuSmartphone as Smartphone, LuShield as Shield, LuTrendingUp as TrendingUp, LuCreditCard as CreditCard, LuGlobe as Globe, LuZap as Zap, LuWallet as Wallet, LuUsers as Users, LuBanknote as Banknote, LuArrowRight as ArrowRight, LuArrowLeft as ArrowLeft, LuBookOpen as BookOpen, LuQrCode as QrCode, LuLandmark as Landmark, LuWifi as Wifi, LuIndianRupee as IndianRupee, LuBadgeCheck as BadgeCheck, LuShieldCheck as ShieldCheck, LuPiggyBank as PiggyBank } from "react-icons/lu";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ScrollProgress, BackToTop } from "@/components/ScrollUtilities";

@@ -1,17 +1,30 @@
 import { motion } from "framer-motion";
 import { useRef, useEffect } from "react";
+import { LuBanknote, LuBuilding2, LuLandmark, LuWallet } from "react-icons/lu";
+import { SiAirtel, SiHdfcbank, SiRazorpay } from "react-icons/si";
+import type { IconType } from "react-icons";
 
 const partners = [
-  { name: "HDFC Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg" },
-  { name: "State Bank of India", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cc/SBI-logo.svg" },
-  { name: "Cashfree", logo: "/cashfree-logo.png" },
-  { name: "Bank of Maharashtra", logo: "/bom-logo.png" },
-  { name: "Bank of Baroda", logo: "/bob-logo.png" },
-  { name: "Airtel Payments Bank", logo: "/apb-logo.png" },
-  { name: "Razorpay", logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" },
+  { name: "HDFC Bank", icon: SiHdfcbank },
+  { name: "State Bank of India", icon: LuLandmark, logo: "/SBI-logo.svg.png" },
+  { name: "Cashfree", icon: LuWallet },
+  { name: "Bank of Maharashtra", icon: LuBuilding2 },
+  { name: "Bank of Baroda", icon: LuBanknote },
+  { name: "Airtel Payments Bank", icon: SiAirtel },
+  { name: "Razorpay", icon: SiRazorpay },
 ];
 
-const PartnerCard = ({ name, logo, index = 0 }: { name: string; logo: string; index?: number }) => (
+const PartnerCard = ({
+  name,
+  icon: Icon,
+  logo,
+  index = 0,
+}: {
+  name: string;
+  icon: IconType;
+  logo?: string;
+  index?: number;
+}) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.8 }}
     whileInView={{ opacity: 1, scale: 1 }}
@@ -21,12 +34,21 @@ const PartnerCard = ({ name, logo, index = 0 }: { name: string; logo: string; in
     className="flex-shrink-0 flex items-center justify-center px-3 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl border border-border/30 bg-card/50 backdrop-blur-md hover:border-primary/40 hover:shadow-[0_4px_30px_rgba(37,99,235,0.15)] transition-all duration-500 ease-out select-none cursor-pointer"
     title={name}
   >
-    <img
-      src={logo}
-      alt={name}
-      className="h-10 sm:h-14 w-auto max-w-[100px] sm:max-w-[140px] object-contain transition-all duration-300"
-      loading="lazy"
-    />
+    <div className="flex items-center gap-2.5 sm:gap-3">
+      {logo ? (
+        <img
+          src={logo}
+          alt={`${name} logo`}
+          className="h-7 sm:h-9 w-auto max-w-[56px] sm:max-w-[72px] object-contain"
+          loading="lazy"
+        />
+      ) : (
+        <Icon className="h-7 w-7 sm:h-9 sm:w-9 text-foreground/90" aria-hidden="true" />
+      )}
+      <div className="leading-tight">
+        <div className="text-xs sm:text-sm font-semibold text-foreground/90">{name}</div>
+      </div>
+    </div>
   </motion.div>
 );
 

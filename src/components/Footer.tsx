@@ -1,4 +1,4 @@
-import { Linkedin, Twitter, Instagram, Youtube } from "lucide-react";
+import { LuLinkedin as Linkedin, LuTwitter as Twitter, LuInstagram as Instagram, LuYoutube as Youtube } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import MagniPayLogo from "./MagniPayLogo";
 

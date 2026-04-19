@@ -257,14 +257,14 @@ const BlogCarousel = lazy(() =>
 #### **Named Imports (Good)**
 ```jsx
 // ✅ Only imports used icons
-import { Heart, Users, Zap } from 'lucide-react';
+import { LuHeart, LuUsers, LuZap } from 'react-icons/lu';
 import { motion } from 'framer-motion';
 ```
 
 #### **Default Imports (Bad)**
 ```jsx
 // ❌ Imports entire icon set
-import all from 'lucide-react';
+import * as LuIcons from 'react-icons/lu';
 ```
 
 ### **3. Dependency Analysis**
@@ -370,7 +370,7 @@ Total (gzipped):       ~200KB
 | Framer Motion | 50KB | 45KB | Use only needed animations |
 | Radix UI | 30KB | 25KB | Tree-shake unused components |
 | Tailwind | 15KB | 12KB | Purge unused utilities |
-| Icons | 20KB | 10KB | Use single icon library (lucide-react) |
+| Icons | 20KB | 10KB | Use single icon library (react-icons) |
 
 ---
 

@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
-import {
-  ArrowLeft, RotateCcw, Ban, AlertTriangle, Mail, Clock, CheckCircle2,
-  CreditCard, CalendarDays, Hash, Receipt,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { LuArrowLeft as ArrowLeft, LuRotateCcw as RotateCcw, LuBan as Ban, LuTriangleAlert as AlertTriangle, LuMail as Mail, LuClock as Clock, LuCircleCheck as CheckCircle2, LuCreditCard as CreditCard, LuCalendarDays as CalendarDays, LuHash as Hash, LuReceipt as Receipt } from "react-icons/lu";
+import type { IconType as LucideIcon } from "react-icons";
 
 /* ── helpers ───────────────────────────────────── */
 const Bullet = ({ children }: { children: React.ReactNode }) => (

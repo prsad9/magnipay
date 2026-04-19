@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Mail, Code2, CreditCard, TrendingUp, ArrowRight } from "lucide-react";
+import { LuMail as Mail, LuCode as Code2, LuCreditCard as CreditCard, LuTrendingUp as TrendingUp, LuArrowRight as ArrowRight } from "react-icons/lu";
+import BorderGlow from "./BorderGlow";
+import { GridPattern } from "@/components/ui/grid-pattern";
 
 const steps = [
   {
@@ -7,24 +9,28 @@ const steps = [
     title: "Contact Us",
     desc: "Reach out and let's talk. Our team will answer your questions and show you exactly what MagniPay can do for you.",
     gradient: "from-primary to-accent",
+    glowColor: "203 54 62",
   },
   {
     icon: Code2,
     title: "Easy Setup",
     desc: "No complex setup. We'll guide you through the integration step-by-step. Test everything in sandbox first.",
     gradient: "from-accent to-secondary",
+    glowColor: "113 44 62",
   },
   {
     icon: CreditCard,
     title: "Start Receiving",
     desc: "Accept payments from day one—UPI, cards, wallets, bank transfers. Your first transaction can happen today.",
     gradient: "from-secondary to-primary",
+    glowColor: "203 54 58",
   },
   {
     icon: TrendingUp,
     title: "Watch It Grow",
     desc: "See your business grow in real-time. Our dashboard gives you all the insights you need to succeed.",
     gradient: "from-primary to-secondary",
+    glowColor: "109 44 60",
   },
 ];
 
@@ -39,6 +45,29 @@ const HowItWorksSection = () => {
         style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)))" }} />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px] opacity-15 pointer-events-none"
         style={{ background: "linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--primary)))" }} />
+
+      <div className="pointer-events-none absolute -bottom-8 -right-8 h-[88%] w-[84%] overflow-hidden">
+        <GridPattern
+          width={40}
+          height={40}
+          x={0}
+          y={0}
+          squares={[
+            [22, 10],
+            [24, 11],
+            [26, 12],
+            [28, 13],
+            [23, 14],
+            [25, 15],
+            [27, 16],
+            [29, 17],
+            [24, 18],
+            [26, 19],
+            [28, 20],
+          ]}
+          className="fill-primary/20 stroke-primary/45 opacity-85 dark:fill-primary/25 dark:stroke-primary/55 [mask-image:radial-gradient(620px_circle_at_bottom_right,white_6%,white_62%,transparent_96%)]"
+        />
+      </div>
 
       <div className="container relative z-10">
         <motion.div
@@ -70,31 +99,44 @@ const HowItWorksSection = () => {
               whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="relative text-center group"
+              whileHover={{ y: -4 }}
+              className="relative h-full group"
             >
-              {/* Premium Card Background */}
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="p-3 sm:p-4 lg:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-br from-white/60 to-white/40 dark:from-neutral-900/70 dark:to-neutral-800/60 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)] group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.1)] dark:group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.3)] transition-all duration-300"
+              <BorderGlow
+                edgeSensitivity={28}
+                glowColor={step.glowColor}
+                backgroundColor="hsl(var(--card))"
+                borderRadius={18}
+                glowRadius={36}
+                glowIntensity={0.95}
+                coneSpread={24}
+                animated={false}
+                colors={["hsl(var(--primary))", "hsl(var(--secondary))", "hsl(var(--accent))"]}
+                fillOpacity={0.42}
+                className="h-full"
               >
-                <div className="relative inline-flex mb-3 sm:mb-4">
-                  <div className={`p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${step.gradient} shadow-lg
-                    group-hover:shadow-[0_0_20px_hsl(var(--primary)_/_0.3)] transition-all duration-400 group-hover:scale-105`}>
-                    <step.icon size={18} className="text-white sm:hidden" />
-                    <step.icon size={24} className="text-white hidden sm:block" />
+                <div className="p-4 sm:p-5 lg:p-6 text-left">
+                  <div className="flex items-start justify-between mb-4">
+                    <div
+                      className={`p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${step.gradient} shadow-lg
+                        group-hover:shadow-[0_0_20px_hsl(var(--primary)_/_0.3)] transition-all duration-400 group-hover:scale-105`}
+                    >
+                      <step.icon size={18} className="text-white sm:hidden" />
+                      <step.icon size={22} className="text-white hidden sm:block" />
+                    </div>
+                    <div className="min-w-[34px] h-8 px-2 inline-flex items-center justify-center rounded-full bg-primary/12 text-primary text-xs font-bold tracking-wide">
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
                   </div>
-                  <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gradient-to-br from-primary to-accent border-2 border-background flex items-center justify-center text-xs font-bold text-white shadow-lg">
-                    {i + 1}
-                  </div>
+
+                  <h3 className="font-display font-bold text-base sm:text-lg lg:text-xl mb-2 text-foreground">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed text-balance">
+                    {step.desc}
+                  </p>
                 </div>
-
-                <h3 className="font-display font-bold text-sm sm:text-base mb-2 text-foreground">{step.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2">{step.desc}</p>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-primary to-accent rounded-full group-hover:w-12 transition-all duration-300" />
-              </motion.div>
+              </BorderGlow>
 
               {i < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-1/2 -right-8 -translate-y-1/2 text-primary/30">

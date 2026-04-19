@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { HelpCircle } from "lucide-react";
+import { LuCircleHelp as HelpCircle } from "react-icons/lu";
 import {
   Accordion,
   AccordionContent,

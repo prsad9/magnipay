@@ -1,13 +1,6 @@
 import { Link } from "react-router-dom";
-import {
-  ArrowLeft, FileText, Scale, Shield, UserCheck, Globe, RefreshCw, KeyRound,
-  Receipt, Ban, XCircle, Eye, IndianRupee, Server, Store, BookOpen, Gavel,
-  Wifi, Database, AlertTriangle, TrendingDown, Landmark, Power, CreditCard,
-  RotateCcw, ShieldAlert, Wallet, Package, Copyright, ShieldOff, Unlink,
-  Megaphone, Mail, MessageSquare, ScrollText, MinusCircle, Clock, BookCheck,
-  Phone,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { LuArrowLeft as ArrowLeft, LuFileText as FileText, LuScale as Scale, LuShield as Shield, LuUserCheck as UserCheck, LuGlobe as Globe, LuRefreshCw as RefreshCw, LuKeyRound as KeyRound, LuReceipt as Receipt, LuBan as Ban, LuCircleX as XCircle, LuEye as Eye, LuIndianRupee as IndianRupee, LuServer as Server, LuStore as Store, LuBookOpen as BookOpen, LuGavel as Gavel, LuWifi as Wifi, LuDatabase as Database, LuTriangleAlert as AlertTriangle, LuTrendingDown as TrendingDown, LuLandmark as Landmark, LuPower as Power, LuCreditCard as CreditCard, LuRotateCcw as RotateCcw, LuShieldAlert as ShieldAlert, LuWallet as Wallet, LuPackage as Package, LuCopyright as Copyright, LuShieldOff as ShieldOff, LuUnlink as Unlink, LuMegaphone as Megaphone, LuMail as Mail, LuMessageSquare as MessageSquare, LuScrollText as ScrollText, LuCircleMinus as MinusCircle, LuClock as Clock, LuBookCheck as BookCheck, LuPhone as Phone } from "react-icons/lu";
+import type { IconType as LucideIcon } from "react-icons";
 
 /* ── bullet helper ─────────────────────────────── */
 const Bullet = ({ children }: { children: React.ReactNode }) => (

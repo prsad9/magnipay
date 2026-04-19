@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUp, Mail } from "lucide-react";
+import { LuArrowUp as ArrowUp, LuMail as Mail } from "react-icons/lu";
 
 export const ScrollProgress = () => {
   const [progress, setProgress] = useState(0);
@@ -71,9 +71,9 @@ export const BackToTop = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 lg:bottom-8 max-lg:bottom-24 p-3 rounded-full bg-gradient-to-br from-primary via-primary to-secondary 
-                     text-primary-foreground shadow-[0_0_20px_rgba(31,111,169,0.34)] 
-                     hover:shadow-[0_0_30px_rgba(107,191,89,0.42)] hover:scale-110
+          className="fixed bottom-6 right-6 z-50 lg:bottom-8 max-lg:bottom-24 p-3 rounded-full bg-black text-white border border-black/15
+                     shadow-[0_12px_24px_rgba(0,0,0,0.24)] dark:bg-white dark:text-black dark:border-white/35
+                     hover:shadow-[0_16px_30px_rgba(0,0,0,0.3)] hover:scale-110
                      transition-all duration-300 active:scale-95"
           aria-label="Back to top"
         >
@@ -127,8 +127,9 @@ export const MobileCTA = () => {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               className="flex-shrink-0 px-5 sm:px-9 py-3 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-white text-sm sm:text-lg
-                         bg-gradient-to-r from-brand-blue to-brand-green hover:brightness-110
-                         shadow-[0_0_25px_rgba(31,111,169,0.35)] hover:shadow-[0_0_35px_rgba(107,191,89,0.4)]
+                         bg-black border border-black/15 shadow-[0_12px_24px_rgba(0,0,0,0.24)]
+                         dark:bg-white dark:text-black dark:border-white/35
+                         hover:opacity-90 hover:shadow-[0_16px_30px_rgba(0,0,0,0.3)]
                          transition-all duration-300 flex items-center gap-2"
             >
               <Mail size={18} />

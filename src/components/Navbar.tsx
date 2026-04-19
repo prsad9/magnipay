@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon, Sun, Info, PenLine, Handshake, ChevronRight } from "lucide-react";
+import { LuMenu as Menu, LuX as X, LuMoon as Moon, LuSun as Sun, LuInfo as Info, LuPenLine as PenLine, LuHandshake as Handshake, LuChevronRight as ChevronRight } from "react-icons/lu";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
 import MagniPayLogo from "./MagniPayLogo";

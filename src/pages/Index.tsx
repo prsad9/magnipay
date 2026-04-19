@@ -17,14 +17,15 @@ import { ScrollProgress, BackToTop, MobileCTA } from "@/components/ScrollUtiliti
 
 const Index = () => {
   return (
-    <div className="noise-overlay overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <ScrollProgress />
       <Navbar />
       <main>
         <HeroSection />
+              <OurPartnersSection />
         <ImageShowcase />
         <ServicesMarquee />
-        <OurPartnersSection />
+  
         <HowItWorksSection />
         <ServicesSection />
         <CashbackAndRefundsSection />

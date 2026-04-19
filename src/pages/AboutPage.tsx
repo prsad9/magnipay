@@ -1,9 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  Building2, Users, Globe, Shield, Smartphone, Zap, TrendingUp,
-  Headphones, Wallet, ShieldCheck, CreditCard, Banknote, ArrowLeft
-} from "lucide-react";
+import { LuBuilding2 as Building2, LuUsers as Users, LuGlobe as Globe, LuShield as Shield, LuSmartphone as Smartphone, LuZap as Zap, LuTrendingUp as TrendingUp, LuHeadphones as Headphones, LuWallet as Wallet, LuShieldCheck as ShieldCheck, LuCreditCard as CreditCard, LuBanknote as Banknote, LuArrowLeft as ArrowLeft } from "react-icons/lu";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ScrollProgress, BackToTop } from "@/components/ScrollUtilities";
